@@ -48,7 +48,7 @@ func TestFormatServerDownResponse(t *testing.T) {
 func TestCallServer_Blocked(t *testing.T) {
 	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
-		w.Write([]byte(`{"blocked":true,"matches":[{"name":"AWS","parent":"Amazon","category":"FORTUNE 500 (US)"}]}`))
+		_, _ = w.Write([]byte(`{"blocked":true,"matches":[{"name":"AWS","parent":"Amazon","category":"FORTUNE 500 (US)"}]}`))
 	}))
 	defer srv.Close()
 
@@ -64,7 +64,7 @@ func TestCallServer_Blocked(t *testing.T) {
 func TestCallServer_Allowed(t *testing.T) {
 	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
-		w.Write([]byte(`{"blocked":false,"matches":[]}`))
+		_, _ = w.Write([]byte(`{"blocked":false,"matches":[]}`))
 	}))
 	defer srv.Close()
 

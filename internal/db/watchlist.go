@@ -43,12 +43,12 @@ func (w *WatchlistDB) FindCompany(term string) (Match, bool) {
 
 func (w *WatchlistDB) CompanyCount() int {
 	var count int
-	w.db.QueryRow("SELECT COUNT(*) FROM companies").Scan(&count)
+	_ = w.db.QueryRow("SELECT COUNT(*) FROM companies").Scan(&count)
 	return count
 }
 
 func (w *WatchlistDB) AliasCount() int {
 	var count int
-	w.db.QueryRow("SELECT COUNT(*) FROM aliases").Scan(&count)
+	_ = w.db.QueryRow("SELECT COUNT(*) FROM aliases").Scan(&count)
 	return count
 }

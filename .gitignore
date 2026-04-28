@@ -6,9 +6,6 @@
 seed-watchlist.sql
 seed-aliases.sql
 
-# Generated files
-internal/matcher/words.txt
-
 # Go
 /vendor/
 

@@ -14,7 +14,7 @@ func setupAllowlistDB(t *testing.T) *db.AllowlistDB {
 	if err != nil {
 		t.Fatal(err)
 	}
-	t.Cleanup(func() { sqlDB.Close() })
+	t.Cleanup(func() { _ = sqlDB.Close() })
 
 	adb, err := db.NewAllowlistDB(sqlDB)
 	if err != nil {
@@ -51,9 +51,15 @@ func TestAllowlist_CaseInsensitive(t *testing.T) {
 
 func TestAllowlist_List(t *testing.T) {
 	adb := setupAllowlistDB(t)
-	adb.Add("Shell")
-	adb.Add("Meta")
-	adb.Add("WHO")
+	if err := adb.Add("Shell"); err != nil {
+		t.Fatal(err)
+	}
+	if err := adb.Add("Meta"); err != nil {
+		t.Fatal(err)
+	}
+	if err := adb.Add("WHO"); err != nil {
+		t.Fatal(err)
+	}
 	terms, err := adb.List()
 	if err != nil {
 		t.Fatal(err)
@@ -65,7 +71,9 @@ func TestAllowlist_List(t *testing.T) {
 
 func TestAllowlist_Remove(t *testing.T) {
 	adb := setupAllowlistDB(t)
-	adb.Add("Shell")
+	if err := adb.Add("Shell"); err != nil {
+		t.Fatal(err)
+	}
 	if err := adb.Remove("Shell"); err != nil {
 		t.Fatal(err)
 	}
@@ -76,7 +84,9 @@ func TestAllowlist_Remove(t *testing.T) {
 
 func TestAllowlist_RemoveCaseInsensitive(t *testing.T) {
 	adb := setupAllowlistDB(t)
-	adb.Add("Shell")
+	if err := adb.Add("Shell"); err != nil {
+		t.Fatal(err)
+	}
 	if err := adb.Remove("shell"); err != nil {
 		t.Fatal(err)
 	}
@@ -102,8 +112,12 @@ func TestAllowlist_DuplicateAdd(t *testing.T) {
 
 func TestAllowlist_Count(t *testing.T) {
 	adb := setupAllowlistDB(t)
-	adb.Add("Shell")
-	adb.Add("Meta")
+	if err := adb.Add("Shell"); err != nil {
+		t.Fatal(err)
+	}
+	if err := adb.Add("Meta"); err != nil {
+		t.Fatal(err)
+	}
 	if count := adb.Count(); count != 2 {
 		t.Errorf("expected count 2, got %d", count)
 	}

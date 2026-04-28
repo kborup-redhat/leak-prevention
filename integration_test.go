@@ -21,7 +21,7 @@ func setupIntegrationServer(t *testing.T) *httptest.Server {
 	if err != nil {
 		t.Fatal(err)
 	}
-	t.Cleanup(func() { watchSQL.Close() })
+	t.Cleanup(func() { _ = watchSQL.Close() })
 
 	_, err = watchSQL.Exec(`
 		CREATE TABLE companies (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, category TEXT NOT NULL);
@@ -45,7 +45,7 @@ func setupIntegrationServer(t *testing.T) *httptest.Server {
 	if err != nil {
 		t.Fatal(err)
 	}
-	t.Cleanup(func() { allowSQL.Close() })
+	t.Cleanup(func() { _ = allowSQL.Close() })
 
 	wdb := db.NewWatchlistDB(watchSQL)
 	adb, err := db.NewAllowlistDB(allowSQL)
@@ -67,7 +67,7 @@ func TestIntegration_CheckBlocked(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	defer resp.Body.Close()
+	defer func() { _ = resp.Body.Close() }()
 
 	var result struct {
 		Blocked bool `json:"blocked"`
@@ -76,7 +76,9 @@ func TestIntegration_CheckBlocked(t *testing.T) {
 			Parent string `json:"parent"`
 		} `json:"matches"`
 	}
-	json.NewDecoder(resp.Body).Decode(&result)
+	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
+		t.Fatal(err)
+	}
 
 	if !result.Blocked {
 		t.Fatal("expected blocked")
@@ -95,12 +97,14 @@ func TestIntegration_CheckAllowed(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	defer resp.Body.Close()
+	defer func() { _ = resp.Body.Close() }()
 
 	var result struct {
 		Blocked bool `json:"blocked"`
 	}
-	json.NewDecoder(resp.Body).Decode(&result)
+	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
+		t.Fatal(err)
+	}
 
 	if result.Blocked {
 		t.Fatal("expected allowed")
@@ -111,57 +115,80 @@ func TestIntegration_AllowlistFlow(t *testing.T) {
 	srv := setupIntegrationServer(t)
 	defer srv.Close()
 
-	// Step 1: Check blocked
 	body := `{"prompt":"Deploy to AWS"}`
-	resp, _ := http.Post(srv.URL+"/check", "application/json", bytes.NewBufferString(body))
+	resp, err := http.Post(srv.URL+"/check", "application/json", bytes.NewBufferString(body))
+	if err != nil {
+		t.Fatal(err)
+	}
 	var r1 struct{ Blocked bool }
-	json.NewDecoder(resp.Body).Decode(&r1)
-	resp.Body.Close()
+	if err := json.NewDecoder(resp.Body).Decode(&r1); err != nil {
+		t.Fatal(err)
+	}
+	_ = resp.Body.Close()
 	if !r1.Blocked {
 		t.Fatal("step 1: expected blocked")
 	}
 
-	// Step 2: Add to allowlist
 	body = `{"term":"AWS"}`
-	resp, _ = http.Post(srv.URL+"/allowlist", "application/json", bytes.NewBufferString(body))
+	resp, err = http.Post(srv.URL+"/allowlist", "application/json", bytes.NewBufferString(body))
+	if err != nil {
+		t.Fatal(err)
+	}
 	if resp.StatusCode != 201 {
 		t.Fatalf("step 2: expected 201, got %d", resp.StatusCode)
 	}
-	resp.Body.Close()
+	_ = resp.Body.Close()
 
-	// Step 3: Check again — should pass
 	body = `{"prompt":"Deploy to AWS"}`
-	resp, _ = http.Post(srv.URL+"/check", "application/json", bytes.NewBufferString(body))
+	resp, err = http.Post(srv.URL+"/check", "application/json", bytes.NewBufferString(body))
+	if err != nil {
+		t.Fatal(err)
+	}
 	var r2 struct{ Blocked bool }
-	json.NewDecoder(resp.Body).Decode(&r2)
-	resp.Body.Close()
+	if err := json.NewDecoder(resp.Body).Decode(&r2); err != nil {
+		t.Fatal(err)
+	}
+	_ = resp.Body.Close()
 	if r2.Blocked {
 		t.Fatal("step 3: expected allowed after allowlisting")
 	}
 
-	// Step 4: List allowlist
-	resp, _ = http.Get(srv.URL + "/allowlist")
+	resp, err = http.Get(srv.URL + "/allowlist")
+	if err != nil {
+		t.Fatal(err)
+	}
 	var list struct{ Terms []string }
-	json.NewDecoder(resp.Body).Decode(&list)
-	resp.Body.Close()
+	if err := json.NewDecoder(resp.Body).Decode(&list); err != nil {
+		t.Fatal(err)
+	}
+	_ = resp.Body.Close()
 	if len(list.Terms) != 1 || list.Terms[0] != "AWS" {
 		t.Errorf("step 4: unexpected terms: %v", list.Terms)
 	}
 
-	// Step 5: Delete from allowlist
-	req, _ := http.NewRequest("DELETE", srv.URL+"/allowlist/AWS", nil)
-	resp, _ = http.DefaultClient.Do(req)
+	req, err := http.NewRequest("DELETE", srv.URL+"/allowlist/AWS", nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	resp, err = http.DefaultClient.Do(req)
+	if err != nil {
+		t.Fatal(err)
+	}
 	if resp.StatusCode != 204 {
 		t.Fatalf("step 5: expected 204, got %d", resp.StatusCode)
 	}
-	resp.Body.Close()
+	_ = resp.Body.Close()
 
-	// Step 6: Check again — should block
 	body = `{"prompt":"Deploy to AWS"}`
-	resp, _ = http.Post(srv.URL+"/check", "application/json", bytes.NewBufferString(body))
+	resp, err = http.Post(srv.URL+"/check", "application/json", bytes.NewBufferString(body))
+	if err != nil {
+		t.Fatal(err)
+	}
 	var r3 struct{ Blocked bool }
-	json.NewDecoder(resp.Body).Decode(&r3)
-	resp.Body.Close()
+	if err := json.NewDecoder(resp.Body).Decode(&r3); err != nil {
+		t.Fatal(err)
+	}
+	_ = resp.Body.Close()
 	if !r3.Blocked {
 		t.Fatal("step 6: expected blocked after removing from allowlist")
 	}
@@ -175,14 +202,16 @@ func TestIntegration_Health(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	defer resp.Body.Close()
+	defer func() { _ = resp.Body.Close() }()
 
 	var health struct {
 		Status         string `json:"status"`
 		WatchlistCount int    `json:"watchlist_count"`
 		AliasCount     int    `json:"alias_count"`
 	}
-	json.NewDecoder(resp.Body).Decode(&health)
+	if err := json.NewDecoder(resp.Body).Decode(&health); err != nil {
+		t.Fatal(err)
+	}
 
 	if health.Status != "ok" {
 		t.Errorf("expected ok, got %s", health.Status)

@@ -21,7 +21,7 @@ func setupServer(t *testing.T) http.Handler {
 	if err != nil {
 		t.Fatal(err)
 	}
-	t.Cleanup(func() { watchSQL.Close() })
+	t.Cleanup(func() { _ = watchSQL.Close() })
 
 	_, err = watchSQL.Exec(`
 		CREATE TABLE companies (
@@ -47,7 +47,7 @@ func setupServer(t *testing.T) http.Handler {
 	if err != nil {
 		t.Fatal(err)
 	}
-	t.Cleanup(func() { allowSQL.Close() })
+	t.Cleanup(func() { _ = allowSQL.Close() })
 
 	wdb := db.NewWatchlistDB(watchSQL)
 	adb, err := db.NewAllowlistDB(allowSQL)
@@ -94,7 +94,9 @@ func TestCheckEndpoint_Allowed(t *testing.T) {
 	srv.ServeHTTP(rec, req)
 
 	var result matcher.Result
-	json.NewDecoder(rec.Body).Decode(&result)
+	if err := json.NewDecoder(rec.Body).Decode(&result); err != nil {
+		t.Fatal(err)
+	}
 	if result.Blocked {
 		t.Fatalf("expected not blocked, matches: %+v", result.Matches)
 	}
@@ -122,7 +124,9 @@ func TestAllowlistEndpoint_AddAndList(t *testing.T) {
 	var listResp struct {
 		Terms []string `json:"terms"`
 	}
-	json.NewDecoder(rec.Body).Decode(&listResp)
+	if err := json.NewDecoder(rec.Body).Decode(&listResp); err != nil {
+		t.Fatal(err)
+	}
 	if len(listResp.Terms) != 1 || listResp.Terms[0] != "Shell" {
 		t.Errorf("unexpected terms: %v", listResp.Terms)
 	}
@@ -151,7 +155,9 @@ func TestAllowlistEndpoint_Delete(t *testing.T) {
 	var listResp struct {
 		Terms []string `json:"terms"`
 	}
-	json.NewDecoder(rec.Body).Decode(&listResp)
+	if err := json.NewDecoder(rec.Body).Decode(&listResp); err != nil {
+		t.Fatal(err)
+	}
 	if len(listResp.Terms) != 0 {
 		t.Errorf("expected empty allowlist after delete, got: %v", listResp.Terms)
 	}
@@ -174,7 +180,9 @@ func TestHealthEndpoint(t *testing.T) {
 		AliasCount     int    `json:"alias_count"`
 		AllowlistCount int    `json:"allowlist_count"`
 	}
-	json.NewDecoder(rec.Body).Decode(&health)
+	if err := json.NewDecoder(rec.Body).Decode(&health); err != nil {
+		t.Fatal(err)
+	}
 	if health.Status != "ok" {
 		t.Errorf("expected status ok, got %s", health.Status)
 	}

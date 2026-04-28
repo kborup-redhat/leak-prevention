@@ -2,6 +2,7 @@ package api
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 
 	"github.com/kborup-redhat/leak-prevention/internal/db"
@@ -24,7 +25,9 @@ func (h *Handler) Check(w http.ResponseWriter, r *http.Request) {
 	}
 	result := h.matcher.Check(req.Prompt)
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(result)
+	if err := json.NewEncoder(w).Encode(result); err != nil {
+		log.Printf("failed to encode check response: %v", err)
+	}
 }
 
 func (h *Handler) ListAllowlist(w http.ResponseWriter, r *http.Request) {
@@ -37,7 +40,9 @@ func (h *Handler) ListAllowlist(w http.ResponseWriter, r *http.Request) {
 		terms = []string{}
 	}
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(map[string][]string{"terms": terms})
+	if err := json.NewEncoder(w).Encode(map[string][]string{"terms": terms}); err != nil {
+		log.Printf("failed to encode allowlist response: %v", err)
+	}
 }
 
 func (h *Handler) AddAllowlist(w http.ResponseWriter, r *http.Request) {
@@ -76,5 +81,7 @@ func (h *Handler) Health(w http.ResponseWriter, r *http.Request) {
 		"allowlist_count": h.allowlist.Count(),
 	}
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(resp)
+	if err := json.NewEncoder(w).Encode(resp); err != nil {
+		log.Printf("failed to encode health response: %v", err)
+	}
 }

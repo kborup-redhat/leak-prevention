@@ -16,7 +16,7 @@ func setupMatcher(t *testing.T) *matcher.Matcher {
 	if err != nil {
 		t.Fatal(err)
 	}
-	t.Cleanup(func() { watchSQL.Close() })
+	t.Cleanup(func() { _ = watchSQL.Close() })
 
 	_, err = watchSQL.Exec(`
 		CREATE TABLE companies (
@@ -47,7 +47,7 @@ func setupMatcher(t *testing.T) *matcher.Matcher {
 	if err != nil {
 		t.Fatal(err)
 	}
-	t.Cleanup(func() { allowSQL.Close() })
+	t.Cleanup(func() { _ = allowSQL.Close() })
 
 	wdb := db.NewWatchlistDB(watchSQL)
 	adb, err := db.NewAllowlistDB(allowSQL)
@@ -113,7 +113,9 @@ func TestMatcher_MultipleMatches(t *testing.T) {
 
 func TestMatcher_AllowlistBypass(t *testing.T) {
 	m := setupMatcher(t)
-	m.Allowlist().Add("AWS")
+	if err := m.Allowlist().Add("AWS"); err != nil {
+		t.Fatal(err)
+	}
 	result := m.Check("Deploy our app to AWS")
 	if result.Blocked {
 		t.Fatal("expected not blocked after allowlisting AWS")

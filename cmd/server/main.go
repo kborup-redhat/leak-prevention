@@ -28,7 +28,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to open watchlist: %v", err)
 	}
-	defer watchDB.Close()
+	defer func() { _ = watchDB.Close() }()
 
 	if err := os.MkdirAll(*allowlistDir, 0755); err != nil {
 		log.Fatalf("Failed to create allowlist directory: %v", err)
@@ -38,7 +38,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to open allowlist: %v", err)
 	}
-	defer allowDB.Close()
+	defer func() { _ = allowDB.Close() }()
 
 	wdb := db.NewWatchlistDB(watchDB)
 	adb, err := db.NewAllowlistDB(allowDB)

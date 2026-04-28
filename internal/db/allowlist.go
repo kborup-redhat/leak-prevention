@@ -22,7 +22,7 @@ func NewAllowlistDB(sqlDB *sql.DB) (*AllowlistDB, error) {
 
 func (a *AllowlistDB) IsAllowed(term string) bool {
 	var count int
-	a.db.QueryRow("SELECT COUNT(*) FROM allowlist WHERE term = ?1 COLLATE NOCASE", term).Scan(&count)
+	_ = a.db.QueryRow("SELECT COUNT(*) FROM allowlist WHERE term = ?1 COLLATE NOCASE", term).Scan(&count)
 	return count > 0
 }
 
@@ -44,7 +44,7 @@ func (a *AllowlistDB) List() ([]string, error) {
 	if err != nil {
 		return nil, err
 	}
-	defer rows.Close()
+	defer func() { _ = rows.Close() }()
 
 	var terms []string
 	for rows.Next() {
@@ -59,6 +59,6 @@ func (a *AllowlistDB) List() ([]string, error) {
 
 func (a *AllowlistDB) Count() int {
 	var count int
-	a.db.QueryRow("SELECT COUNT(*) FROM allowlist").Scan(&count)
+	_ = a.db.QueryRow("SELECT COUNT(*) FROM allowlist").Scan(&count)
 	return count
 }

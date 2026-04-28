@@ -14,7 +14,7 @@ func setupWatchlistDB(t *testing.T) *db.WatchlistDB {
 	if err != nil {
 		t.Fatal(err)
 	}
-	t.Cleanup(func() { sqlDB.Close() })
+	t.Cleanup(func() { _ = sqlDB.Close() })
 
 	_, err = sqlDB.Exec(`
 		CREATE TABLE companies (
