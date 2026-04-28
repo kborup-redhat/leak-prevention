@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"time"
 
 	"github.com/kborup-redhat/leak-prevention/internal/api"
 	"github.com/kborup-redhat/leak-prevention/internal/db"
@@ -30,7 +31,7 @@ func main() {
 	}
 	defer func() { _ = watchDB.Close() }()
 
-	if err := os.MkdirAll(*allowlistDir, 0755); err != nil {
+	if err := os.MkdirAll(*allowlistDir, 0750); err != nil {
 		log.Fatalf("Failed to create allowlist directory: %v", err)
 	}
 	allowlistPath := filepath.Join(*allowlistDir, "allowlist.db")
@@ -54,7 +55,15 @@ func main() {
 	log.Printf("Watchlist: %d companies, %d aliases", wdb.CompanyCount(), wdb.AliasCount())
 	log.Printf("Allowlist: %d terms", adb.Count())
 
-	if err := http.ListenAndServe(addr, router); err != nil {
+	srv := &http.Server{
+		Addr:              addr,
+		Handler:           router,
+		ReadHeaderTimeout: 10 * time.Second,
+		ReadTimeout:       30 * time.Second,
+		WriteTimeout:      30 * time.Second,
+		IdleTimeout:       120 * time.Second,
+	}
+	if err := srv.ListenAndServe(); err != nil {
 		log.Fatalf("Server failed: %v", err)
 	}
 }
