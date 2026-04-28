@@ -1,0 +1,20 @@
+# Build artifacts
+/server
+/hook
+/leak-prevention-hook
+*.db
+seed-watchlist.sql
+seed-aliases.sql
+
+# Generated files
+internal/matcher/words.txt
+
+# Go
+/vendor/
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store

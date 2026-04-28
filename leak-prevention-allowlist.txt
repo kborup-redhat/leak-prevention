@@ -1,0 +1,6 @@
+# Leak Prevention Allowlist
+# Add words here (one per line) that are safe to send to the model.
+# Lines starting with # are ignored.
+# Example:
+# Acme
+Shell

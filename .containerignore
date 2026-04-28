@@ -1,0 +1,7 @@
+.git
+*.md
+docs/
+leak-prevention-watchlist.txt
+leak-prevention-allowlist.txt
+seed-watchlist.sql
+seed-aliases.sql

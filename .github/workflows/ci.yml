@@ -1,0 +1,98 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    container:
+      image: quay.io/kborup/ai-toolbox-ci:1.25
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate dictionary for embed
+        run: |
+          dnf install -y words 2>/dev/null || true
+          if [ -f /usr/share/dict/words ]; then
+            tr '[:upper:]' '[:lower:]' < /usr/share/dict/words | sort -u > internal/matcher/words.txt
+          else
+            touch internal/matcher/words.txt
+          fi
+
+      - name: Run tests
+        run: go test ./... -v -count=1 -race
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    container:
+      image: quay.io/kborup/ai-toolbox-ci:1.25
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate dictionary for embed
+        run: |
+          dnf install -y words 2>/dev/null || true
+          if [ -f /usr/share/dict/words ]; then
+            tr '[:upper:]' '[:lower:]' < /usr/share/dict/words | sort -u > internal/matcher/words.txt
+          else
+            touch internal/matcher/words.txt
+          fi
+
+      - name: golangci-lint
+        run: golangci-lint run ./...
+
+  security:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    container:
+      image: quay.io/kborup/ai-toolbox-ci:1.25
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate dictionary for embed
+        run: |
+          dnf install -y words 2>/dev/null || true
+          if [ -f /usr/share/dict/words ]; then
+            tr '[:upper:]' '[:lower:]' < /usr/share/dict/words | sort -u > internal/matcher/words.txt
+          else
+            touch internal/matcher/words.txt
+          fi
+
+      - name: Run gosec
+        run: gosec ./...
+
+      - name: Run govulncheck
+        run: govulncheck ./...
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    container:
+      image: quay.io/kborup/ai-toolbox-ci:1.25
+    needs: [test, lint, security]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate dictionary for embed
+        run: |
+          dnf install -y words 2>/dev/null || true
+          if [ -f /usr/share/dict/words ]; then
+            tr '[:upper:]' '[:lower:]' < /usr/share/dict/words | sort -u > internal/matcher/words.txt
+          else
+            touch internal/matcher/words.txt
+          fi
+
+      - name: Build server
+        run: go build -o leak-prevention-server ./cmd/server
+
+      - name: Build hook
+        run: go build -o leak-prevention-hook ./cmd/hook

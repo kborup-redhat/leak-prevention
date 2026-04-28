@@ -1,0 +1,3066 @@
+# Customer Name Watchlist - Always trigger detection regardless of dictionary
+# Case-insensitive matching. One name per line.
+# Sources: Fortune 500, Fortune 500 Europe, FTSE 100, DAX 40, CAC 40, Nordic companies
+
+# === FORTUNE 500 (US) ===
+Amazon
+Walmart
+UnitedHealth
+Apple
+Alphabet
+Google
+Google Cloud
+YouTube
+CVS Health
+McKesson
+Berkshire Hathaway
+Exxon Mobil
+Cencora
+Microsoft
+Costco
+Cigna
+Cardinal Health
+Elevance Health
+Ford Motor
+Meta
+Chevron
+General Motors
+Nvidia
+Centene
+JPMorgan Chase
+Home Depot
+Walgreens
+Fannie Mae
+Kroger
+Verizon
+Marathon Petroleum
+Phillips 66
+StoneX
+Humana
+AT&T
+Comcast
+State Farm
+Freddie Mac
+Valero Energy
+Target
+Dell Technologies
+Bank of America
+Tesla
+Walt Disney
+PepsiCo
+Johnson & Johnson
+UPS
+FedEx
+RTX
+Progressive
+Procter & Gamble
+Lowe's
+Archer Daniels Midland
+Sysco
+Albertsons
+Boeing
+Energy Transfer
+Wells Fargo
+Citi
+HCA Healthcare
+Lockheed Martin
+MetLife
+Morgan Stanley
+Allstate
+IBM
+American Express
+Caterpillar
+Merck
+Delta Airlines
+Pfizer
+New York Life Insurance
+Performance Food
+ConocoPhillips
+Oracle
+TD Synnex
+Publix Super Markets
+Broadcom
+AbbVie
+Eli Lilly
+TJX
+Nationwide
+United Airlines
+Cisco Systems
+Prudential Financial
+Goldman Sachs
+HP
+Charter Communications
+Tyson Foods
+American Airlines
+Intel
+Enterprise Products Partners
+General Dynamics
+Ingram Micro
+Liberty Mutual Insurance
+Uber
+USAA
+Travelers
+Bristol-Myers Squibb
+Coca-Cola
+TIAA
+Nike
+Deere
+Qualcomm
+General Electric
+Abbott Laboratories
+Thermo Fisher Scientific
+Netflix
+Mass Mutual
+Molina Healthcare
+Dollar General
+Best Buy
+Northwestern Mutual
+Northrop Grumman
+Dow
+Honeywell
+Salesforce
+Visa
+Philip Morris
+CBRE
+CHS
+US Foods
+Warner Bros
+GE Vernova
+World Kinect
+Mondelez
+Lithia Motors
+Micron Technology
+Starbucks
+Amgen
+Lennar
+Hewlett Packard
+Coupang
+Cummins
+GuideWell Mutual
+PayPal
+Advanced Micro Devices
+Nucor
+Oneok
+Mastercard
+Duke Energy
+Ferguson
+Penske Automotive
+Jabil
+NRG Energy
+PBF Energy
+Paccar
+Arrow Electronics
+Gilead Sciences
+Capital One
+Paramount
+Applied Materials
+CarMax
+AutoNation
+Hartford Insurance
+Baker Hughes
+Southwest Airlines
+Apollo Global Management
+Quanta Services
+HF Sinclair
+Occidental Petroleum
+Marsh & McLennan
+NextEra Energy
+McDonald's
+Booking.com
+Freeport-McMoRan
+Jones Lang LaSalle
+Kraft Heinz
+Marriott International
+Constellation Energy
+3M
+Waste Management
+PG&E
+Live Nation Entertainment
+Union Pacific
+Stryker
+International Paper
+Exelon
+Danaher
+Genuine Parts
+Adobe
+Sherwin-Williams
+Lear
+WESCO International
+Charles Schwab
+BlackRock
+Macy's
+EOG Resources
+Halliburton
+CDW
+Carrier Global
+Ross Stores
+Becton Dickinson
+PNC
+L3Harris Technologies
+Newmont
+American Electric Power
+BJ's Wholesale Club
+Fiserv
+Super Micro Computer
+Amphenol
+Cognizant Technology
+Tenet Healthcare
+GE HealthCare Technologies
+Altria
+Colgate-Palmolive
+Parker-Hannifin
+Kimberly-Clark
+Lam Research
+Intuit
+Boston Scientific
+AutoZone
+General Mills
+Dollar Tree
+Cheniere Energy
+Cleveland-Cliffs
+Ameriprise Financial
+Aramark
+Lincoln National
+Corebridge Financial
+Goodyear
+Truist Financial
+Loews
+Carvana
+Edison International
+Emerson Electric
+Asbury Automotive
+Aflac
+Manpower
+Steel Dynamics
+Discover Financial
+Corteva
+O'Reilly Automotive
+Targa Resources
+Leidos
+MGM Resorts International
+Texas Instruments
+Vistra
+Murphy USA
+Universal Health Services
+Casey's General Stores
+Consolidated Edison
+Devon Energy
+Republic Services
+Guardian Life
+Kinder Morgan
+Edward Jones
+EMCOR
+Markel
+Land O'Lakes
+Keurig Dr Pepper
+AECOM
+Omnicom
+United Rentals
+IQVIA
+Ecolab
+Illinois Tool Works
+Pacific Life
+Dominion Energy
+Principal Financial
+Kohl's
+PPG Industries
+Builders FirstSource
+Fluor
+Whirlpool
+Farmers Insurance Exchange
+Tractor Supply
+Gap
+EchoStar
+Sonic Automotive
+Stanley Black & Decker
+LPL Financial
+Kyndryl
+Kenvue
+S&P Global
+Corning
+Dick's Sporting Goods
+DTE Energy
+Diamondback Energy
+Mutual of Omaha Insurance
+Nordstrom
+Estée Lauder
+Expedia
+Otis Worldwide
+FirstEnergy
+Regeneron Pharmaceuticals
+Textron
+Xcel Energy
+BorgWarner
+Alaska Air
+Viatris
+CSX
+LKQ
+Fidelity National Financial
+Raymond James Financial
+Reliance
+Labcorp
+MasTec
+Sempra
+State Street
+United States Steel
+DaVita
+BrightSpring Health Services
+Erie Insurance
+Eversource Energy
+Unum
+Henry Schein
+GXO Logistics
+Alcoa
+DuPont
+Blackstone
+Entergy
+DXC Technology
+Lumen Technologies
+Ryder System
+Kellanova
+ServiceNow
+DoorDash
+Chewy
+Assurant
+KLA
+Darden Restaurants
+Las Vegas Sands
+Wayfair
+Norfolk Southern
+Equitable
+Hormel Foods
+AES
+Arthur J. Gallagher
+Cincinnati Financial
+J.B. Hunt Transport Services
+Air Products & Chemicals
+Jacobs Solutions
+Huntington Ingalls Industries
+Hess
+Ulta Beauty
+Airbnb
+Mosaic
+Chipotle Mexican Grill
+Vertex Pharmaceuticals
+Booz Allen Hamilton
+Avis Budget
+Owens Corning
+Graybar Electric
+Andersons
+Berry Global
+Yum China
+Hershey
+Westlake
+Conagra Brands
+Caesars Entertainment
+Motorola Solutions
+Oscar Health
+Molson Coors
+Burlington Stores
+Baxter International
+Analog Devices
+Hilton
+Toll Brothers
+Quest Diagnostics
+Interpublic
+Mohawk Industries
+Ebay
+NVR
+Cintas
+Ally Financial
+Lululemon
+Fidelity National Information
+American Tower
+Autoliv
+Oshkosh
+Campbell's
+Western Digital
+Global Payments
+Biogen
+AGCO
+Dana
+Welltower
+THOR Industries
+Seaboard
+Intercontinental Exchange
+Concentrix
+Celanese
+Vertiv
+Synchrony Financial
+Constellation Brands
+Intuitive Surgical
+Palo Alto Networks
+WEC Energy
+SpartanNash
+QVC
+Ace Hardware
+Zoetis
+Skechers
+Icahn Enterprises
+Workday
+CenterPoint Energy
+JetBlue Airways
+Prologis
+Equinix
+Eastman Chemical
+PPL
+Xylem
+CACI International
+TransDigm
+PVH
+Ovintiv
+NOV
+Avery Dennison
+Franklin Resources
+J.M. Smucker
+Sprouts Farmers Market
+ABM Industries
+Advance Auto Parts
+Graphic Packaging
+Sirius XM
+Hertz
+Jefferies Financial
+News Corp
+Solventum
+Taylor Morrison
+Rockwell Automation
+CMS Energy
+Securian Financial
+Sanmina
+Voya Financial
+XPO
+Yum Brands
+KBR
+Zimmer Biomet
+Fastenal
+Foot Locker
+Monster Beverage
+Howmet Aerospace
+Northern Trust
+Dover
+Williams-Sonoma
+Vulcan Materials
+Regions Financial
+Commercial Metals
+Core & Main
+Rush Enterprises
+Microchip Technology
+Masco
+Interactive Brokers
+Huntington Bancshares
+Endeavor
+Par Pacific
+Citizens Financial
+Watsco
+Electronic Arts
+Newell Brands
+Ingredion
+QXO Building Products
+
+UnitedHealth Group
+Costco Wholesale
+Cigna Group
+Citigroup
+Meta Platforms
+Walgreens Boots Alliance
+Verizon Communications
+Goldman Sachs Group
+State Farm Insurance
+StoneX Group
+Delta Air Lines
+United Airlines Holdings
+Performance Food Group
+American Airlines Group
+Capital One Financial
+Cisco
+Liberty Mutual Insurance Group
+Plains GP Holdings
+Ingram Micro Holding
+Uber Technologies
+Massachusetts Mutual Life Insurance
+U.S. Bancorp
+Bank of New York
+Warner Bros. Discovery
+GE Aerospace
+Honeywell International
+Philip Morris International
+US Foods Holding
+D.R. Horton
+Mondelez International
+CBRE Group
+PNC Financial Services Group
+GuideWell Mutual Holding
+PayPal Holdings
+United Natural Foods
+Penske Automotive Group
+Hewlett Packard Enterprise
+KKR
+Ferguson Enterprises
+Paramount Global
+AIG
+Southern
+Hartford Insurance Group
+Block
+Avnet
+Booking Holdings
+Discover
+Reinsurance Group of America
+American Family Insurance Group
+Altria Group
+Group 1 Automotive
+Cognizant Technology Solutions
+Automatic Data Processing
+Goodyear Tire & Rubber
+PulteGroup
+ManpowerGroup
+C.H. Robinson Worldwide
+Asbury Automotive Group
+W.W. Grainger
+Global Partners
+Peter Kiewit Sons'
+Leidos Holdings
+Markel Group
+Guardian Life Ins. Co. of America
+Jones Financial
+Kyndryl Holdings
+Auto-Owners Insurance
+Omnicom Group
+Estee Lauder
+IQVIA Holdings
+First Citizens BancShares
+Mutual of Omaha
+EMCOR Group
+Fox
+Western & Southern Financial Group
+Expedia Group
+W.R. Berkley
+M&T Bank
+Fifth Third Bancorp
+Erie Insurance Group
+Labcorp Holdings
+Unum Group
+Community Health Systems
+Delek US Holdings
+Equitable Holdings
+LPL Financial Holdings
+Citizens Financial Group
+Berry Global Group
+Ball
+Crown Holdings
+Avis Budget Group
+Alaska Air Group
+Molson Coors Beverage
+International Flavors & Fragrances
+Yum China Holdings
+Hilton Worldwide Holdings
+Thrivent Financial for Lutherans
+Owens & Minor
+Interpublic Group
+Booz Allen Hamilton Holding
+Lululemon athletica
+Expeditors Intl. of Washington
+Fidelity National Information Services
+Jefferies Financial Group
+Williams
+VF
+FM
+Westinghouse Air Brake Technologies
+Public Service Enterprise Group
+QVC Group
+APA
+A-Mark Precious Metals
+Interactive Brokers Group
+KeyCorp
+Hertz Global Holdings
+Altice USA
+Graphic Packaging Holding
+Insight Enterprises
+Sirius XM Holdings
+WEC Energy Group
+Packaging Corp. of America
+American Financial Group
+Old Republic International
+Securian Financial Group
+Taylor Morrison Home
+Vertiv Holdings
+Par Pacific Holdings
+TransDigm Group
+Post Holdings
+Zimmer Biomet Holdings
+ARKO
+Endeavor Group Holdings
+Science Applications International
+Fortune.com official ranking page
+Salttechno.ai dataset
+Kaggle dataset
+Scribd documents
+# === FORTUNE 500 EUROPE / MAJOR EUROPEAN ===
+Volkswagen
+Shell
+TotalEnergies
+Glencore
+BP
+Stellantis
+BMW
+Mercedes-Benz
+Électricité de France
+Banco Santander
+BNP Paribas
+HSBC
+Deutsche Telekom
+Uniper
+Allianz
+Rosneft
+Equinor
+Nestlé
+Nestle
+Enel
+Eni
+E.ON
+Gazprom
+Bosch
+Ahold Delhaize
+Crédit Agricole
+Credit Agricole
+Dior
+Carrefour
+Rewe
+Axa
+Engie
+Orlen
+DHL
+Tesco
+Siemens
+Vinci
+Lukoil
+BASF
+UBS
+Airbus
+ArcelorMittal
+Roche
+BBVA
+Lloyds
+Deutsche Bank
+Accenture
+Unilever
+Barclays
+Munich Re
+Sberbank
+Zurich Insurance
+Bouygues
+Daimler Truck
+ING
+AB InBev
+Repsol
+Renault
+Edeka
+Novartis
+Rio Tinto
+Iberdrola
+Deutsche Bahn
+Volvo
+Intesa Sanpaolo
+Saint-Gobain
+Bayer
+Maersk
+Sanofi
+Swiss Re
+Chubb
+Veolia
+Vodafone
+Exor
+UniCredit
+EnBW
+Orange
+INGKA
+Talanx
+AstraZeneca
+SNCF
+Continental
+L'Oréal
+LOreal
+Telefónica
+Telefonica
+OMV
+LyondellBasell
+Sainsbury's
+Sainsburys
+Lufthansa
+ThyssenKrupp
+Inditex
+Schneider Electric
+ASML
+Heineken
+NN Group
+Philips
+Randstad
+Elia Group
+Ageas
+Solvay
+Umicore
+ABB
+Richemont
+Erste Group
+Verbund
+Raiffeisen
+voestalpine
+
+Electricité de France
+Rosneft Oil
+Royal Ahold Delhaize
+Christian Dior
+REWE Group
+# === DAX 40 (Germany) ===
+Adidas
+Beiersdorf
+Brenntag
+Commerzbank
+Deutsche Börse
+Deutsche Boerse
+Fresenius
+Hannover Re
+Heidelberg Materials
+Henkel
+Infineon
+MTU Aero Engines
+Porsche
+Qiagen
+Rheinmetall
+RWE
+SAP
+Scout24
+Siemens Energy
+Siemens Healthineers
+Symrise
+Vonovia
+Zalando
+GEA
+
+Deutsche Post
+Fresenius Medical Care
+Hannover Rück
+Münchener Rück
+Adidas
+Airbus
+Bayer
+Beiersdorf
+BMW
+Brenntag
+Commerzbank
+Continental
+Daimler Truck
+Deutsche Bank
+Deutsche Börse
+Deutsche Telekom
+E.ON
+GEA
+Hannover Rück
+Henkel
+Infineon
+# === CAC 40 (France) ===
+Air Liquide
+Alstom
+Capgemini
+Danone
+Dassault Systèmes
+Dassault Systemes
+EssilorLuxottica
+Eurofins
+Hermès
+Hermes
+Kering
+Legrand
+LVMH
+Michelin
+Pernod Ricard
+Publicis
+Safran
+Société Générale
+Societe Generale
+STMicroelectronics
+Thales
+Unibail-Rodamco-Westfield
+Vivendi
+
+Accor
+Bureau Veritas
+Edenred
+Eurofins Scientific
+Hermès International
+Publicis Groupe
+Teleperformance
+Veolia Environnement
+Accor
+Air Liquide
+ArcelorMittal
+AXA
+BNP Paribas
+Bouygues
+Bureau Veritas
+Capgemini
+Carrefour
+Compagnie de Saint-Gobain
+Crédit Agricole
+Danone
+Dassault Systemes
+Eiffage
+Engie
+EssilorLuxottica
+Euronext
+Hermes International
+L'Oreal
+Michelin
+# === FTSE 100 (UK) ===
+3I Group
+Admiral Group
+Airtel Africa
+Alliance Witan
+Anglo American
+Antofagasta
+Ashtead Group
+Associated British Foods
+Auto Trader
+Aviva
+BAE Systems
+Barratt Redrow
+Beazley
+Berkeley Group
+British American Tobacco
+British Land
+BT Group
+Bunzl
+Centrica
+Compass Group
+Convatec
+Croda International
+DCC
+Diageo
+Diploma
+Easyjet
+Endeavour Mining
+Entain
+Experian
+Fresnillo
+Games Workshop
+GSK
+Haleon
+Halma
+Hargreaves Lansdown
+Hikma Pharmaceuticals
+Hiscox
+Howden Joinery
+IMI
+Imperial Brands
+Informa
+Intercontinental Hotels
+Intermediate Capital
+Intertek
+JD Sports
+Kingfisher
+Land Securities
+Legal & General
+London Stock Exchange
+Londonmetric
+M&G
+Marks & Spencer
+Melrose Industries
+Mondi
+National Grid
+Natwest
+Next PLC
+Pearson
+Pershing Square
+Persimmon
+Phoenix Group
+Reckitt Benckiser
+RELX
+Rentokil Initial
+Rightmove
+Rolls-Royce
+Sage Group
+Schroders
+Scottish Mortgage
+Segro
+Severn Trent
+Smith & Nephew
+Smiths Group
+Spirax
+SSE
+St James's Place
+Standard Chartered
+Taylor Wimpey
+Unite Group
+United Utilities
+Weir Group
+Whitbread
+WPP
+
+# === NORDIC COMPANIES ===
+Nordea
+Ericsson
+DNB
+SEB
+Handelsbanken
+Telia
+Swedbank
+Telenor
+Fortum
+Novo Nordisk
+H&M
+Danske Bank
+Sampo Group
+Norsk Hydro
+Atlas Copco
+Carlsberg
+Nokia
+Yara International
+Sandvik
+Skanska
+UPM-Kymmene
+SKF
+Stora Enso
+KONE
+Electrolux
+Assa Abloy
+Investor AB
+Tele2
+Metso
+Orkla
+Kinnevik
+Storebrand
+OP-Pohjola
+Aker Solutions
+Gjensidige
+Lundbergföretagen
+Alfa Laval
+Neste
+Wärtsilä
+Wartsila
+Boliden
+Jyske Bank
+Swedish Match
+Hexagon
+Nokian Tyres
+Kesko
+Novozymes
+Sydbank
+Getinge
+Coloplast
+Vestas
+ISS
+Securitas
+DSV
+Spotify
+Klarna
+Northvolt
+Pleo
+Cognite
+Pandora
+Tryg
+Topdanmark
+Demant
+Rockwool
+Genmab
+GN Store Nord
+SimCorp
+FLSmidth
+Ørsted
+Orsted
+Chr Hansen
+Ambu
+Bavarian Nordic
+Lundbeck
+Ringkjoebing Landbobank
+William Demant
+
+Most public sources only show top 20-40 companies
+Different methodologies yield different rankings
+Equinor
+A.P. Møller-Mærsk
+Volvo Car
+Ericsson
+IKEA
+DSV
+DNB
+Aker BP
+Danske Bank
+Fortum
+H&M
+Atlas Copco
+Sampo
+KONE
+Carlsberg
+Essity
+AstraZeneca
+Assa Abloy
+Hexagon
+Handelsbanken
+Telia Company
+ABB
+Alfa Laval
+Boliden
+Epiroc
+Elekta
+Hexpol
+Coloplast
+Demant
+Novonesis
+DFDS
+Elisa
+Cargotec
+Huhtamäki
+TietoEVRY
+Gjensidige
+Mowi
+SalMar
+Austevoll Seafood
+Tomra
+Subsea 7
+Frontline
+Nordic Semiconductor
+Bavarian Nordic
+Orion
+Nibe Industrier
+EQT
+Holmen
+YIT
+Stockmann
+Tokmanni
+Citycon
+Axfood
+Coop
+Wallenius Wilhelmsen
+# === EUROPEAN GOVERNMENTS & GOVERNMENT ENTITIES ===
+European Commission
+European Council
+European Parliament
+European Central Bank
+European Investment Bank
+European Space Agency
+Eurostat
+Europol
+Frontex
+CERN
+NATO
+OECD
+World Economic Forum
+
+# UK Government
+HM Treasury
+HM Revenue
+HMRC
+NHS
+Ministry of Defence
+Home Office
+Foreign Office
+Cabinet Office
+Downing Street
+Bank of England
+Financial Conduct Authority
+Ofcom
+Ofgem
+Ofsted
+Ofwat
+Crown Prosecution Service
+National Crime Agency
+UK Trade
+British Army
+Royal Navy
+Royal Air Force
+Transport for London
+Network Rail
+Highways England
+Public Health England
+UK Health Security Agency
+Environment Agency
+Natural England
+
+# German Government
+Bundestag
+Bundesrat
+Bundeskanzleramt
+Bundesbank
+Bundeswehr
+Auswärtiges Amt
+Bundesministerium
+BaFin
+Finanzamt
+Zollamt
+Verfassungsschutz
+Bundespolizei
+Technisches Hilfswerk
+
+# French Government
+Élysée
+Elysee
+Matignon
+Assemblée Nationale
+Assemblee Nationale
+Sénat
+Banque de France
+Cour des Comptes
+Conseil d'État
+Conseil Constitutionnel
+Gendarmerie
+Préfecture
+Prefecture
+
+# Nordic Governments
+Folketing
+Riksdag
+Storting
+Eduskunta
+Althing
+Statsministeriet
+Finansministeriet
+Skattestyrelsen
+Kommunernes Landsforening
+Danske Regioner
+Nationalbanken
+Finanstilsynet
+Datatilsynet
+Energistyrelsen
+Miljøstyrelsen
+Sundhedsstyrelsen
+Rigspolitiet
+Forsvaret
+Forsvarsmakten
+Riksbanken
+Riksgälden
+Finansinspektionen
+Skatteverket
+Arbetsförmedlingen
+Norges Bank
+Stortinget
+Statsforvalteren
+Mattilsynet
+Helsedirektoratet
+Politidirektoratet
+Suomen Pankki
+Valtiovarainministeriö
+
+# EU Member State Government Entities
+Banca d'Italia
+Banco de España
+Banco de Portugal
+De Nederlandsche Bank
+Nationale Bank van België
+Oesterreichische Nationalbank
+Riksbanken
+Danmarks Nationalbank
+Central Bank of Ireland
+
+# International Organizations
+United Nations
+World Bank
+International Monetary Fund
+IMF
+World Trade Organization
+WTO
+World Health Organization
+WHO
+International Energy Agency
+IEA
+International Atomic Energy Agency
+IAEA
+Red Cross
+Amnesty International
+Médecins Sans Frontières
+Doctors Without Borders
+
+# Scandinavian Municipalities & Regions (commonly referenced)
+Københavns Kommune
+Region Hovedstaden
+Region Midtjylland
+Region Syddanmark
+Region Nordjylland
+Region Sjælland
+Stockholms Stad
+Göteborgs Stad
+Malmö Stad
+Oslo Kommune
+Bergen Kommune
+Trondheim Kommune
+Helsingin Kaupunki
+Espoon Kaupunki
+Tampereen Kaupunki
+
+Council of the European Union
+Court of Justice of the European Union
+European Court of Auditors
+European Economic and Social Committee
+Committee of the Regions
+European Ombudsman
+European External Action Service
+European Medicines Agency
+European Food Safety Authority
+European Aviation Safety Agency
+European Maritime Safety Agency
+European Railway Agency
+European Chemicals Agency
+European Environment Agency
+European Centre for Disease Prevention and Control
+European Fisheries Control Agency
+European Union Agency for Network and Information Security
+European Banking Authority
+European Insurance and Occupational Pensions Authority
+European Securities and Markets Authority
+Single Resolution Board
+European Union Agency for Law Enforcement Cooperation
+European Union Agency for Criminal Justice Cooperation
+European Union Agency for Asylum
+European Border and Coast Guard Agency
+European Union Agency for Fundamental Rights
+European Institute for Gender Equality
+European Monitoring Centre for Drugs and Drug Addiction
+European Union Agency for Law Enforcement Training
+European Union Agency for the Operational Management of Large-Scale IT Systems
+European Public Prosecutor's Office
+European Defence Agency
+European Union Satellite Centre
+European Union Institute for Security Studies
+European Union Agency for the Space Programme
+Office for Harmonisation in the Internal Market
+Community Plant Variety Office
+European Centre for the Development of Vocational Training
+European Training Foundation
+European Foundation for the Improvement of Living and Working Conditions
+European Agency for Safety and Health at Work
+European Labour Authority
+Agency for the Cooperation of Energy Regulators
+Body of European Regulators for Electronic Communications
+European Research Executive Agency
+European Research Council Executive Agency
+European Climate, Infrastructure and Environment Executive Agency
+European Education and Culture Executive Agency
+European Health and Digital Executive Agency
+Directorate-General for Agriculture and Rural Development
+Directorate-General for Budget
+Directorate-General for Climate Action
+Directorate-General for Communication
+Directorate-General for Communications Networks, Content and Technology
+Directorate-General for Competition
+Directorate-General for Economic and Financial Affairs
+Directorate-General for Education, Youth, Sport and Culture
+Directorate-General for Employment, Social Affairs and Inclusion
+Directorate-General for Energy
+Directorate-General for Environment
+Directorate-General for Health and Food Safety
+Directorate-General for Internal Market, Industry, Entrepreneurship and SMEs
+Directorate-General for International Partnerships
+Directorate-General for Justice and Consumers
+Directorate-General for Maritime Affairs and Fisheries
+Directorate-General for Migration and Home Affairs
+Directorate-General for Mobility and Transport
+Directorate-General for Neighbourhood and Enlargement Negotiations
+Directorate-General for Research and Innovation
+Directorate-General for Taxation and Customs Union
+Directorate-General for Trade
+Directorate-General for Defence Industry and Space
+European Statistical Office
+Joint Research Centre
+Publications Office of the European Union
+Service for Foreign Policy Instruments
+Federal Republic of Germany
+Federal Ministry of Finance
+Federal Ministry of the Interior
+Federal Ministry of Defence
+Federal Ministry of Foreign Affairs
+Federal Ministry for Digital and State Modernisation
+Federal Ministry of Labour and Social Affairs
+Federal Ministry for Transport
+Federal Ministry of Justice
+Federal Ministry of Economics and Climate Protection
+Federal Ministry of Health
+Federal Ministry of Food and Agriculture
+Federal Ministry for Economic Cooperation and Development
+Federal Ministry for Housing, Urban Development and Building
+French Republic
+Ministry of Foreign Affairs and International Development
+Ministry of the Interior
+Ministry of Justice
+Ministry of Economy, Finance and Industrial and Digital Sovereignty
+Ministry of National Education and Youth
+Ministry of Higher Education, Research and Innovation
+Ministry of Labour, Full Employment and Integration
+Ministry of Health and Prevention
+Ministry of Ecological Transition
+Ministry of Territorial Cohesion and Relations with Local Authorities
+Ministry of Agriculture and Food Sovereignty
+Ministry of Culture
+Ministry of Sports and Olympic and Paralympic Games
+Italian Republic
+Ministry of Foreign Affairs and International Cooperation
+Ministry of Economy and Finance
+Ministry of Economic Development
+Ministry of Infrastructure and Transport
+Ministry of Labour and Social Policies
+Ministry of Education
+Ministry of University and Research
+Ministry of Cultural Heritage and Activities
+Ministry of Health
+Ministry of Agriculture, Food and Forestry Policies
+Ministry of the Environment and Energy Security
+Ministry of Tourism
+Kingdom of Spain
+Ministry of Foreign Affairs, European Union and Cooperation
+Ministry of Finance and Public Function
+Ministry of Transport, Mobility and Urban Agenda
+Ministry of Education and Vocational Training
+Ministry of Labour and Social Economy
+Ministry of Industry, Trade and Tourism
+Ministry of Agriculture, Fisheries and Food
+Ministry of the Presidency, Relations with the Cortes and Democratic Memory
+Ministry for the Ecological Transition and the Demographic Challenge
+Ministry of Culture and Sport
+Ministry of Economic Affairs and Digital Transformation
+Ministry of Social Rights and Agenda 2030
+Ministry of Science and Innovation
+Ministry of Equality
+Ministry of Consumer Affairs
+Ministry of Universities
+Republic of Poland
+Ministry of Foreign Affairs
+Ministry of National Defence
+Ministry of the Interior and Administration
+Ministry of Finance
+Ministry of Education and Science
+Ministry of Climate and Environment
+Ministry of Infrastructure
+Ministry of Agriculture and Rural Development
+Ministry of Maritime Economy and Inland Navigation
+Ministry of Development and Technology
+Ministry of Culture and National Heritage
+Ministry of Family and Social Policy
+Ministry of State Assets
+Kingdom of the Netherlands
+Ministry of General Affairs
+Ministry of the Interior and Kingdom Relations
+Ministry of Education, Culture and Science
+Ministry of Justice and Security
+Ministry of Infrastructure and Water Management
+Ministry of Economic Affairs and Climate
+Ministry of Agriculture, Nature and Food Quality
+Ministry of Health, Welfare and Sport
+Ministry of Social Affairs and Employment
+Ministry of Housing and Spatial Planning
+Ministry of Asylum and Migration
+Ministry of Climate Policy and Green Growth
+Kingdom of Belgium
+Federal Public Service Interior
+Federal Public Service Finance
+Federal Public Service Justice
+Federal Public Service Economy, SMEs, Self-Employed and Energy
+Federal Public Service Employment, Labour and Social Dialogue
+Federal Public Service Social Security
+Federal Public Service Health, Food Chain Safety and Environment
+Federal Public Service Mobility and Transport
+Republic of Austria
+Federal Ministry for European and International Affairs
+Federal Ministry of Education, Science and Research
+Federal Ministry of Labour and Economy
+Federal Ministry of Social Affairs, Health, Care and Consumer Protection
+Federal Ministry of Agriculture, Forestry, Regions and Water Management
+Federal Ministry of Arts, Culture, Civil Service and Sport
+Kingdom of Sweden
+Ministry of Employment
+Ministry of Health and Social Affairs
+Ministry of Education and Research
+Ministry of the Environment
+Ministry of Enterprise and Innovation
+Kingdom of Denmark
+Ministry of State
+Ministry of Taxation
+Ministry of Economic Affairs and the Interior
+Ministry of Social Affairs and the Interior
+Ministry of Immigration and Integration
+Ministry of Food, Agriculture and Fisheries
+Ministry of Children and Education
+Ministry of Higher Education and Science
+Ministry of Climate, Energy and Utilities
+Ministry of Environment
+Ministry of Transport
+Ministry of Digital Affairs
+Ministry of Industry, Business and Financial Affairs
+Ministry for Nordic Cooperation
+Republic of Finland
+Ministry of Education and Culture
+Ministry of Agriculture and Forestry
+Ministry of Transport and Communications
+Ministry of Economic Affairs and Employment
+Ministry of Social Affairs and Health
+Ministry of Science and Culture
+Kingdom of Norway
+Ministry of Local Government and Regional Development
+Ministry of Justice and Public Security
+Ministry of Health and Care Services
+Ministry of Labour and Social Inclusion
+Ministry of Trade, Industry and Fisheries
+Ministry of Petroleum and Energy
+Ministry of Agriculture and Food
+Ministry of Children and Families
+Ministry of Culture and Equality
+Ministry of Digitisation and Public Governance
+Ministry of Development Cooperation
+Swiss Confederation
+Federal Department of Foreign Affairs
+Federal Department of Home Affairs
+Federal Department of Justice and Police
+Federal Department of Defence, Civil Protection and Sport
+Federal Department of Finance
+Federal Department of Economic Affairs, Education and Research
+Federal Department of the Environment, Transport, Energy and Communications
+Portuguese Republic
+Ministry of Internal Administration
+Ministry of Economy and the Sea
+Ministry of Agriculture
+Ministry of Science, Technology and Higher Education
+Ministry of Labour, Solidarity and Social Security
+Ministry of Environment and Climate Action
+Ministry of Infrastructure and Housing
+Ministry of Youth and Modernisation
+Hellenic Republic
+Ministry of Interior
+Ministry of Development and Investments
+Ministry of Education and Religious Affairs
+Ministry of Labour and Social Affairs
+Ministry of Environment and Energy
+Ministry of Culture and Sports
+Ministry of Maritime Affairs and Insular Policy
+Ministry of Digital Governance
+Ministry of Rural Development and Food
+Ministry of Migration and Asylum
+Ministry of Climate Crisis and Civil Protection
+Ministry of Citizen Protection
+Ministry of Social Cohesion and the Family
+Ireland
+Department of the Taoiseach
+Department of Finance
+Department of Foreign Affairs and Trade
+Department of Defence
+Department of Justice, Home Affairs and Migration
+Department of Enterprise, Tourism and Employment
+Department of Social Protection
+Department of Health
+Department of Education and Youth
+Department of Further and Higher Education, Research, Innovation and Science
+Department of Agriculture, Food and the Marine
+Department of Housing, Local Government and Heritage
+Department of Transport
+Department of Climate, Energy and the Environment
+Department of Rural and Community Development and the Gaeltacht
+Department of Children, Disability and Equality
+Department of Culture, Communications and Sport
+Czech Republic
+Ministry of Industry and Trade
+Ministry of Regional Development
+Ministry of Education, Youth and Sports
+Romanian Government
+Ministry of Internal Affairs
+Ministry of Economy, Entrepreneurship and Tourism
+Ministry of Transport and Infrastructure
+Ministry of Labour and Social Solidarity
+Ministry of Research, Innovation and Digitalization
+Ministry of Energy
+Ministry of Environment, Waters and Forests
+Ministry of Youth and Sports
+Ministry of Investments and European Projects
+Republic of Hungary
+Ministry of Foreign Affairs and Trade
+Ministry for National Economy
+Ministry of Innovation and Technology
+Ministry of Human Capacities
+Ministry for Construction and Transport
+Ministry of Culture and Innovation
+Republic of Bulgaria
+Ministry of Economy and Industry
+Ministry of Transport, Information Technology and Communications
+Ministry of Regional Development and Public Works
+Ministry of Labour and Social Policy
+Ministry of Environment and Water
+Republic of Croatia
+Ministry of Foreign and European Affairs
+Ministry of Justice and Public Administration
+Ministry of Economy and Sustainable Development
+Ministry of Science and Education
+Ministry of Labour, Pension System, Family and Social Policy
+Ministry of the Sea, Transport and Infrastructure
+Ministry of Tourism and Sports
+Ministry of Construction, Physical Planning and State Assets
+Ministry of Culture and Media
+Ministry of Veterans Affairs
+Ministry of Demography and Immigration
+Ministry of Environmental Protection and Green Transition
+Slovak Republic
+Ministry of Economy
+Ministry of Labour, Social Affairs and Family
+Ministry of Education, Science, Research and Sport
+Ministry of Investments, Regional Development and Informatization
+Republic of Slovenia
+Ministry of Economic Development and Technology
+Ministry of Agriculture, Forestry and Food
+Ministry of the Environment, Climate and Energy
+Ministry of Labour, Family, Social Affairs and Equal Opportunities
+Ministry of Education, Science and Sport
+Ministry of Public Administration
+Ministry of Cohesion and Regional Development
+Ministry of Digital Transformation
+Ministry of Higher Education, Science and Innovation
+Republic of Lithuania
+Ministry of Economy and Innovation
+Ministry of Social Security and Labour
+Republic of Latvia
+Ministry of Economics
+Ministry of Environmental Protection and Regional Development
+Ministry of Welfare
+Republic of Estonia
+Ministry of Economic Affairs and Communications
+Ministry of Rural Affairs
+Ministry of Social Affairs
+Grand Duchy of Luxembourg
+Ministry of the Economy
+Ministry of Education, Children and Youth
+Ministry of Higher Education and Research
+Ministry of Health and Social Security
+Ministry of Agriculture, Viticulture and Rural Development
+Ministry of the Environment, Climate and Biodiversity
+Ministry of Mobility and Public Works
+Ministry for Digitalisation
+Republic of Cyprus
+Ministry of Justice and Public Order
+Ministry of Transport, Communications and Works
+Ministry of Agriculture, Rural Development and Environment
+Ministry of Energy, Commerce and Industry
+Ministry of Labour and Social Insurance
+Ministry of Education, Sport and Youth
+Republic of Malta
+Office of the Prime Minister
+Ministry for Foreign and European Affairs and Trade
+Ministry for Home Affairs, Security and Employment
+Ministry for Finance and Employment
+Ministry for Justice
+Ministry for the Economy, Enterprise and Strategic Projects
+Ministry for Education, Sport, Youth, Research and Innovation
+Ministry for Health
+Ministry for Social Policy and Children's Rights
+Ministry for Agriculture, Fisheries and Animal Rights
+Ministry for the Environment, Energy and Public Cleanliness
+Ministry for Culture, Lands and Local Government
+Ministry for Gozo and Planning
+Ministry for Inclusion and the Voluntary Sector
+Republic of Iceland
+Prime Minister's Office
+Ministry for Foreign Affairs
+Ministry of Finance and Economic Affairs
+Ministry of Social Affairs and Labour
+Ministry of Education and Children
+Ministry for the Environment, Energy and Climate
+Ministry of Industries and Innovation
+Ministry of Culture and Business Affairs
+United Kingdom of Great Britain and Northern Ireland
+Foreign, Commonwealth and Development Office
+Department for Education
+Department of Health and Social Care
+Department for Work and Pensions
+Department for Business and Trade
+Department for Energy Security and Net Zero
+Department for Science, Innovation and Technology
+Department for Environment, Food and Rural Affairs
+Department for Transport
+Department for Culture, Media and Sport
+Department for Levelling Up, Housing and Communities
+Northern Ireland Office
+Scotland Office
+Wales Office
+Attorney General's Office
+Office of the Advocate General for Scotland
+Office of the Leader of the House of Commons
+Office of the Leader of the House of Lords
+European Central Bank
+European Committee of the Regions
+European Data Protection Supervisor
+European Cybersecurity Competence Centre
+European Food Safety Authority
+European Asylum Support Office
+European Union Aviation Safety Agency
+European Police Office
+European Police College
+European Union Agency for Cybersecurity
+European Institute for Gender Equality
+European Union Intellectual Property Office
+European Training Foundation
+European Agency for Special Needs and Inclusive Education
+Translation Centre for the Bodies of the European Union
+European GNSS Agency
+Euratom Supply Agency
+European Innovation Council and SMEs Executive Agency
+Fusion for Energy
+Ministry of Economy, Finance, and Industrial, Energy, and Digital Sovereignty
+Ministry of Agriculture, Agri-Food, and Food Sovereignty
+Ministry for Europe and Foreign Affairs
+Ministry of Labor and Solidarity
+Ministry of Armed Forces
+Ministry of National Education
+Ministry of Higher Education, Research and Space
+Ministry of Health, Families, Autonomy and the Disabled
+Ministry of Sports, Youth and Associations
+Ministry of Regional Planning and Decentralization
+Ministry of Action and Public Accounts
+Ministry of Equality between Women and Men and the Fight against Discrimination
+Ministry for Relations with Parliament
+Ministry of Francophonie, International Partnerships and the French Abroad
+Ministry of the Sea and Fisheries
+Ministry of Artificial Intelligence and the Digital Economy
+Federal Ministry of Agriculture and Forestry
+Federal Ministry of Education and Research
+Federal Ministry for Family Affairs, Senior Citizens, Women and Youth
+Federal Ministry of Health
+Federal Ministry of the Interior and Community
+Federal Ministry of Justice
+Federal Ministry for Digital and Transport
+Cabinet Office
+Department for Health and Social Care
+Home Office
+Department for Digital, Culture, Media and Sport
+Ministry of Enterprises and Made in Italy
+Ministry of Agriculture, Food Sovereignty and Forestry
+Ministry of Education and Merit
+Ministry of Industry and Tourism
+Ministry for Ecological Transition and Demographic Challenge
+Ministry of Labor and Social Economy
+Ministry of Climate and Enterprise
+Ministry of Rural Affairs and Infrastructure
+Ministry of Interior and Housing
+Ministry of Social Affairs and Housing
+Ministry of Business
+Ministry of Church Affairs
+Ministry of Children and Family
+Ministry of Digitalisation and Public Governance
+Federal Chancellery
+Federal Ministry of Economy, Energy and Tourism
+Federal Ministry of Education
+Federal Ministry of Finance
+Ministry for the Presidency
+Ministry for Infrastructure and Housing
+Ministry of Work
+Ministry of Families
+Ministry of Mobility, Climate and Ecological Transition
+Ministry of Public Action and Modernization
+Ministry of Children
+Ministry of Climate
+Ministry of Digitalisation
+Ministry of Ecology
+Ministry of Foreign Trade
+Ministry of Mobility
+Ministry of Science
+Ministry of Social Security
+Ministry of Labor, Family, Social Affairs and Equal Opportunities
+Ministry of Natural Resources and Spatial Planning
+Ministry for a Solidarity-Based Future
+Ministry of Higher Education, Science, and Innovation
+Ministry of Health and Social Care
+Ministry of Regional Development and EU Funds
+Ministry of Science, Education and Youth
+Ministry of Spatial Planning, Construction and State Assets
+Ministry of Croatian Veterans
+Ministry of Electronic Governance
+Ministry of Innovation and Growth
+Ministry of Youth and Sport
+Ministry of Finance
+Ministry of Education, Religious Affairs and Sports
+Ministry of Infrastructure and Transportation
+Ministry of Labour and Social Security
+Ministry of the Environment and Energy
+Department of the Taoiseach
+Department of Health
+Ministry of Family, Labour and Social Policy
+Ministry of Culture, National Heritage and Sport
+Ministry of Investment, Regional Development and Informatization
+Ministry of Environment
+Ministry of Public Finance
+Ministry of Development, Public Works and Administration
+Ministry of European Funds
+Ministry of Energy
+Ministry of Research, Innovation and Digitization
+Ministry of Defence
+Ministry of Human Resources
+Ministry of Foreign Affairs of the Republic of Lithuania
+Directorate-General for Mobility and Transport
+Secretariat-General
+European Anti-Fraud Office
+Statistical Office of the European Union
+# === ADDITIONAL MAJOR EUROPEAN COMPANIES ===
+Zara
+Primark
+Aldi
+Lidl
+Schwarz Gruppe
+Mercadez
+Spar
+Metro AG
+Peugeot
+Citroën
+Citroen
+Fiat
+Lamborghini
+Ferrari
+Maserati
+Bugatti
+Bentley
+McLaren
+Aston Martin
+Jaguar
+Land Rover
+Volvo Cars
+Scania
+MAN
+Iveco
+Pirelli
+Continental
+Michelin
+Bridgestone
+Goodyear
+Bosch
+Siemens
+Philips
+Electrolux
+Dyson
+Miele
+Grundfos
+Danfoss
+Vestas
+Ørsted
+Orsted
+Vattenfall
+Statkraft
+Fortum
+Enel
+Iberdrola
+Endesa
+EDP
+Vattenfall
+Centrica
+SSE
+National Grid
+E.ON
+RWE
+EnBW
+EDF
+Engie
+TotalEnergies
+Repsol
+Galp
+OMV
+MOL Group
+PKN Orlen
+Rosneft
+Gazprom Neft
+Lukoil
+Statoil
+Equinor
+Petrofac
+Saipem
+Technip
+Subsea7
+Aker BP
+Lundin Energy
+Wintershall
+Dea
+CEPSA
+Neste
+Preem
+Nynas
+SSAB
+Outokumpu
+Boliden
+LKAB
+Yara
+Kemira
+Borealis
+SABIC
+ArcelorMittal
+ThyssenKrupp
+Salzgitter
+Tata Steel
+Acerinox
+Tenaris
+Vallourec
+Tubacex
+Schibsted
+Bonnier
+Sanoma
+Egmont
+Aller Media
+Axel Springer
+Bertelsmann
+ProSiebenSat
+RTL Group
+Adevinta
+Finn.no
+Blocket
+Komplett
+Elkjøp
+Elgiganten
+NetOnNet
+CDON
+Zalando
+AboutYou
+Boozt
+Bestseller
+PVH
+Hugo Boss
+Burberry
+Kering
+Chanel
+Louis Vuitton
+Gucci
+Prada
+Armani
+Versace
+Balenciaga
+Givenchy
+Valentino
+Dolce & Gabbana
+Bulgari
+Cartier
+Tiffany
+Swarovski
+Pandora
+Georg Jensen
+Royal Copenhagen
+Bang & Olufsen
+Lego
+Hasbro
+Playmobil
+Ravensburger
+Husqvarna
+Fiskars
+Wärtsilä
+Konecranes
+Cargotec
+Valmet
+Metso Outotec
+Nibe
+Systemair
+Swegon
+Lindab
+Trelleborg
+Haldex
+Hexagon
+Renishaw
+Spectris
+Halma
+Spirax Sarco
+IMI
+Rotork
+Weir Group
+Sandvik
+Atlas Copco
+Epiroc
+Alfa Laval
+Getinge
+Arjo
+Coloplast
+Ambu
+Demant
+GN Audio
+Sonova
+Straumann
+Nobel Biocare
+Dentsply Sirona
+Smith & Nephew
+ConvaTec
+Molnlycke
+Essity
+SCA
+Stora Enso
+UPM
+Metsä
+Holmen
+BillerudKorsnäs
+Billerud
+Smurfit Kappa
+Mondi
+DS Smith
+Tetra Pak
+Arla Foods
+Danish Crown
+Lantmännen
+Valio
+Nortura
+Tine
+Coop
+ICA Gruppen
+Axfood
+Kesko
+SOK
+Rema 1000
+Norgesgruppen
+Coop Norge
+Migros
+Coop Schweiz
+Rewe
+Aldi Nord
+Aldi Süd
+Aldi Sud
+Kaufland
+Penny
+Netto
+Fakta
+Føtex
+Fotex
+Bilka
+Magasin du Nord
+Illum
+Selfridges
+Harrods
+John Lewis
+Tesco
+Sainsbury
+Asda
+Morrisons
+Waitrose
+Aldi UK
+Lidl UK
+Iceland Foods
+Greggs
+Nando's
+Wagamama
+Pret A Manger
+Deliveroo
+Just Eat
+Wolt
+Foodora
+Delivery Hero
+HelloFresh
+Apetit
+Orkla
+Fazer
+Paulig
+Cloetta
+Marabou
+Freia
+Nidar
+Findus
+Nomad Foods
+Arla
+Lactalis
+Danone
+Friesland Campina
+FrieslandCampina
+Müller
+Muller
+Oatly
+Alpro
+Innocent
+Coca-Cola Europacific
+Pepsi
+Carlsberg
+Heineken
+Diageo
+Pernod Ricard
+Moët Hennessy
+Moet Hennessy
+Absolut
+Smirnoff
+Bacardi
+Campari
+Maersk
+DSV
+Kuehne Nagel
+Kuehne+Nagel
+DB Schenker
+DFDS
+Stena Line
+Viking Line
+Tallink
+Color Line
+Fjord Line
+Hurtigruten
+SAS
+Norwegian Air
+Finnair
+Icelandair
+Wizz Air
+Ryanair
+EasyJet
+British Airways
+KLM
+Air France
+Lufthansa
+Swiss International
+Austrian Airlines
+Brussels Airlines
+Iberia
+Vueling
+TAP Portugal
+LOT Polish Airlines
+Aeroflot
+Turkish Airlines
+Pegasus Airlines
+SunExpress
+Transavia
+Eurowings
+
+# === US GOVERNMENT AGENCIES ===
+Department of State
+Department of the Treasury
+Department of Defense
+Department of Justice
+Department of the Interior
+Department of Agriculture
+Department of Commerce
+Department of Labor
+Department of Health and Human Services
+Department of Housing and Urban Development
+Department of Transportation
+Department of Energy
+Department of Education
+Department of Veterans Affairs
+Department of Homeland Security
+Central Intelligence Agency
+National Security Agency
+Federal Bureau of Investigation
+Drug Enforcement Administration
+Bureau of Alcohol, Tobacco, Firearms and Explosives
+U.S. Marshals Service
+U.S. Secret Service
+U.S. Customs and Border Protection
+U.S. Immigration and Customs Enforcement
+Transportation Security Administration
+U.S. Coast Guard
+Defense Intelligence Agency
+National Geospatial-Intelligence Agency
+National Reconnaissance Office
+Office of the Director of National Intelligence
+Environmental Protection Agency
+National Aeronautics and Space Administration
+Social Security Administration
+Federal Trade Commission
+Securities and Exchange Commission
+Federal Communications Commission
+Federal Reserve System
+Federal Deposit Insurance Corporation
+Commodity Futures Trading Commission
+Consumer Financial Protection Bureau
+National Labor Relations Board
+Equal Employment Opportunity Commission
+Occupational Safety and Health Administration
+Nuclear Regulatory Commission
+Small Business Administration
+General Services Administration
+Office of Personnel Management
+National Archives and Records Administration
+United States Postal Service
+National Science Foundation
+United States Agency for International Development
+Peace Corps
+AmeriCorps
+Federal Election Commission
+Consumer Product Safety Commission
+Federal Housing Finance Agency
+Federal Maritime Commission
+Farm Credit Administration
+Tennessee Valley Authority
+National Transportation Safety Board
+Railroad Retirement Board
+Federal Mine Safety and Health Review Commission
+Occupational Safety and Health Review Commission
+Federal Mediation and Conciliation Service
+National Mediation Board
+Merit Systems Protection Board
+
+Department of State
+Department of Defense
+Department of Justice
+Department of Energy
+Department of Education
+U.S. Agency for International Development
+# === MIDDLE EAST GOVERNMENTS ===
+Kingdom of Saudi Arabia
+Ministry of Defense
+Ministry of Transport and Logistics Services
+Ministry of Environment, Water, and Agriculture
+Ministry of Commerce
+Ministry of Hajj and Umrah
+Ministry of Media
+Ministry of Communications and Information Technology
+Ministry of Economy and Planning
+Ministry of Municipalities and Housing
+Ministry of Human Resources and Social Development
+Ministry of Islamic Affairs, Dawah, and Guidance
+United Arab Emirates
+Ministry of Cabinet Affairs
+Ministry of Presidential Affairs
+Ministry of Energy and Infrastructure
+Ministry of Climate Change and Environment
+Ministry of Community Development
+Ministry of Culture and Youth
+Ministry of Human Resources and Emiratisation
+Ministry of Industry and Advanced Technology
+Ministry of Tolerance and Coexistence
+Ministry of Investment
+Ministry of Family
+Federal Authority for Identity and Citizenship
+General Civil Aviation Authority
+Federal Customs Authority
+Federal Competitiveness and Statistics Authority
+Federal Authority for Government Human Resources
+UAE Red Crescent Authority
+State of Qatar
+Ministry of Municipality
+Ministry of Environment and Climate Change
+Ministry of Education and Higher Education
+Ministry of Sports and Youth
+Ministry of Public Health
+Ministry of Labour
+State of Kuwait
+Ministry of Commerce and Industry
+Ministry of Information and Culture
+Ministry of Electricity, Water and Renewable Energy
+Ministry of Higher Education
+Ministry of Public Works
+Ministry of Oil
+Ministry of Housing Affairs
+Ministry of Municipality Affairs
+Kingdom of Bahrain
+Ministry of Finance and National Economy
+Ministry of Defense Affairs
+Ministry of Oil and Environment
+Ministry of Industry and Commerce
+Ministry of Municipalities and Agriculture Affairs
+Ministry of Youth Affairs
+Ministry of Justice and Islamic Affairs
+Ministry of Social Development
+Ministry of Transportation and Telecommunications
+Ministry of Culture, Sports and Youth
+Ministry of Housing and Urban Planning
+Ministry of Information
+Sultanate of Oman
+Ministry of the Diwan of Royal Court
+Ministry of the Royal Office
+Ministry of Justice and Legal Affairs
+Ministry of Heritage and Tourism
+Ministry of Agriculture, Fisheries and Water Resources
+Ministry of Transport, Communications and Information Technology
+Ministry of Energy and Minerals
+Ministry of Endowments and Religious Affairs
+Ministry of Commerce, Industry and Investment Promotion
+Republic of Yemen
+Ministry of Planning and International Cooperation
+Ministry of Women's Affairs
+Hashemite Kingdom of Jordan
+Ministry of Foreign Affairs and Expatriates
+Ministry of Higher Education and Scientific Research
+Ministry of Water and Irrigation
+Ministry of Energy and Mineral Resources
+Ministry of Tourism and Antiquities
+Ministry of Public Works and Housing
+Ministry of Local Administration
+Ministry of Industry, Trade, and Supply
+Ministry of Youth
+Ministry of Awqaf and Islamic Affairs
+Ministry of Government Communications
+Republic of Lebanon
+Ministry of Foreign Affairs and Emigrants
+Ministry of Energy and Water
+Ministry of Telecommunications
+Ministry of Industry
+Ministry of Economy and Trade
+Ministry of Public Works and Transport
+Ministry of Labor
+Ministry of Administrative Development
+Ministry of Artificial Intelligence and Technology
+Ministry of Displaced
+Ministry of Emergency and Disaster Management
+Syrian Arab Republic
+Ministry of Religious Affairs
+Ministry of Housing and Public Works
+Ministry of Local Administration and Environment
+Republic of Iraq
+Office of the President
+Higher Judicial Council
+Ministry of Trade
+Ministry of Planning
+Ministry of Electricity
+Ministry of Communications
+Ministry of Construction and Housing
+Ministry of Transportation
+Ministry of Industry and Minerals
+Ministry of Water Resources
+Ministry of Labor and Social Affairs
+Ministry of Science and Technology
+Ministry of Migration and Displacement
+Islamic Republic of Iran
+Supreme Leader Office
+Guardian Council
+Assembly of Experts
+Expediency Discernment Council
+Supreme National Security Council
+Islamic Revolutionary Guard Corps
+Basij Militia
+Ministry of Agriculture Jihad
+Ministry of Cooperatives, Labour, and Social Welfare
+Ministry of Cultural Heritage, Tourism and Handicrafts
+Ministry of Culture and Islamic Guidance
+Ministry of Defence and Armed Forces Logistics
+Ministry of Economic Affairs and Finance
+Ministry of Health and Medical Education
+Ministry of Industry, Mine and Trade
+Ministry of Information and Communications Technology
+Ministry of Intelligence
+Ministry of Petroleum
+Ministry of Roads and Transportation
+Ministry of Science, Research and Technology
+Ministry of Sport and Youth
+State of Israel
+Ministry of National Security
+Ministry of Agriculture and Food Security
+Ministry of Housing and Construction
+Ministry of Development of the Negev and Galilee
+Ministry of Religious Services
+Ministry of Immigration and Absorption
+Ministry of Diaspora Affairs and Social Equality
+Ministry of Environmental Protection
+Ministry of National Missions
+Arab Republic of Egypt
+Ministry of Foreign Affairs, International Cooperation, and Egyptians Abroad
+Ministry of Health and Population
+Ministry of Local Development and Environment
+Ministry of Housing
+Ministry of Parliamentary Affairs
+Ministry of Military Production
+State of Palestine
+Ministry of Jerusalem Affairs
+Ministry of Communications and Digital Economy
+Ministry of Relief Affairs
+
+Ministry of Community Empowerment
+Ministry of Economy and Tourism
+Ministry of Culture and Knowledge Development
+Ministry of Cabinet Affairs and the Future
+Council of Ministers of Saudi Arabia
+Cabinet of Egypt
+Ministry of Defence and Military Production
+Ministry of Foreign Affairs and Emigration and Expatriate Affairs
+Ministry of Local Development
+Cabinet of Israel
+Cabinet of Turkey
+Ministry of Environment and Urbanization
+Ministry of Labor Social Services and Family
+Cabinet of Iran
+Cabinet of Jordan
+Ministry of Digital Economy and Entrepreneurship
+Ministry of Higher Education and Scientific Research
+Ministry of Industry and Trade and Supply
+Council of Ministers of Lebanon
+Ministry of Energy and Water
+Council of Ministers of Iraq
+Cabinet of Qatar
+Ministry of Development Planning and Statistics
+Ministry of Social Development and Family
+Cabinet of Kuwait
+Cabinet of Bahrain
+Information Affairs Authority
+Labour Market Regulatory Authority
+National Oil and Gas Authority
+Cabinet of Oman
+Ministry of Higher Education Research and Innovation
+Cabinet of Yemen
+Ministry of Public Works and Roads
+Ministry of Religious Endowment and Islamic Affairs
+Ministry of Social and Labour
+Council of Ministers of Syria
+Ministry of Endowments
+Ministry of Expatriates
+Ministry of Irrigation
+Government of Palestine
+Ministry of Detainees and Ex Detainees Affairs
+Environment Quality Authority
+Ministry of Local Government
+Ministry of Telecommunications and Digital Economy
+# === LATIN AMERICAN GOVERNMENTS ===
+Argentina
+Ministerio de Relaciones Exteriores, Comercio Internacional y Culto
+Ministerio de Economía
+Ministerio de Seguridad
+Ministerio de Defensa
+Ministerio de Capital Humano
+Ministerio de Justicia
+Ministerio de Infraestructura
+Ministerio de Salud
+Ministerio del Interior
+Jefatura de Gabinete de Ministros
+Bolivia
+Ministerio de Relaciones Exteriores
+Ministerio de Economía y Finanzas Públicas
+Ministerio de la Presidencia
+Ministerio de Gobierno
+Ministerio de Hidrocarburos
+Ministerio de Desarrollo Rural
+Ministerio de Minería y Metalurgia
+Ministerio de Culturas, Descolonización y Despatriarcalización
+Ministerio de Desarrollo Productivo y Economía Plural
+Brazil
+Ministério da Agricultura e Pecuária
+Ministério das Cidades
+Ministério da Ciência, Tecnologia e Inovação
+Ministério das Comunicações
+Controladoria-Geral da União
+Ministério da Cultura
+Ministério da Defesa
+Ministério da Indústria, Comércio e Serviços
+Ministério do Desenvolvimento Agrário
+Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome
+Ministério dos Direitos Humanos e Cidadania
+Ministério da Educação
+Ministério do Esporte
+Ministério da Gestão e da Inovação em Serviços Públicos
+Ministério da Igualdade Racial
+Ministério da Fazenda
+Ministério da Justiça e Segurança Pública
+Ministério do Meio Ambiente e Mudança do Clima
+Ministério de Minas e Energia
+Ministério da Pesca e Aquicultura
+Ministério do Planejamento e Orçamento
+Ministério da Previdência Social
+Ministério dos Povos Indígenas
+Ministério das Relações Exteriores
+Ministério da Saúde
+Ministério do Trabalho e Emprego
+Ministério dos Transportes
+Ministério do Turismo
+Ministério das Mulheres
+Casa Civil da Presidência da República
+Secretaria-Geral da Presidência da República
+Secretaria de Relações Institucionais
+Secretaria de Comunicação Social
+Gabinete Pessoal do Presidente da República
+Gabinete de Segurança Institucional
+Chile
+Ministerio del Interior y Seguridad Pública
+Ministerio de Defensa Nacional
+Ministerio de Justicia y Derechos Humanos
+Ministerio de Desarrollo Social y Familia
+Ministerio de Educación
+Ministerio de la Mujer y la Equidad de Género
+Ministerio del Deporte
+Ministerio de las Culturas, las Artes y el Patrimonio
+Secretaría General de la Presidencia
+Secretaría General de Gobierno
+Ministerio de Hacienda
+Ministerio de Economía, Fomento y Turismo
+Ministerio de Minería
+Ministerio del Trabajo y Previsión Social
+Ministerio de Obras Públicas
+Ministerio de Transportes y Telecomunicaciones
+Ministerio de Bienes Nacionales
+Ministerio de Vivienda y Urbanismo
+Ministerio de Ciencia, Tecnología, Conocimiento e Innovación
+Ministerio del Medio Ambiente
+Ministerio de Energía
+Ministerio de Agricultura
+Colombia
+Ministerio de Justicia y del Derecho
+Ministerio de Hacienda y Crédito Público
+Ministerio de Agricultura y Desarrollo Rural
+Ministerio de Salud y Protección Social
+Ministerio del Trabajo
+Ministerio de Minas y Energía
+Ministerio de Comercio, Industria y Turismo
+Ministerio de Educación Nacional
+Ministerio del Medio Ambiente y Desarrollo Sostenible
+Ministerio de Vivienda, Ciudad y Territorio
+Ministerio de Tecnologías de la Información y las Comunicaciones
+Ministerio de Transporte
+Ministerio de Cultura
+Ministerio de Ciencia, Tecnología e Innovación
+Costa Rica
+Ministerio de Relaciones Exteriores y Culto
+Ministerio de Comercio Exterior
+Ministerio de Educación Pública
+Ministerio de Ciencia, Innovación, Tecnología y Telecomunicaciones
+Ministerio de Agricultura y Ganadería
+Ministerio de Economía, Industria y Comercio
+Cuba
+Consejo de Ministros
+Ministerio de Economía y Planificación
+Ministerio de Finanzas y Precios
+Ministerio de las Fuerzas Armadas Revolucionarias
+Ministerio de Educación Superior
+Ministerio de Salud Pública
+Ministerio de Comercio Exterior y la Inversión Extranjera
+Ministerio de Comercio Interior
+Ministerio de la Construcción
+Ministerio de Energía y Minas
+Ministerio de la Industria Alimentaria
+Ministerio de Industrias
+Ministerio de la Agricultura
+Ministerio del Transporte
+Ministerio de Comunicaciones
+Ministerio de Ciencia, Tecnología y Medio Ambiente
+Ministerio de Trabajo y Seguridad Social
+Ministerio de Turismo
+Dominican Republic
+Ministerio de Interior y Policía
+Ministerio de Salud Pública y Asistencia Social
+Ministerio de Obras Públicas y Comunicaciones
+Ministerio de Industria, Comercio y Mipymes
+Ministerio de Trabajo
+Ministerio de Deportes
+Ministerio de la Mujer
+Ministerio de la Juventud
+Ministerio de Medio Ambiente y Recursos Naturales
+Ministerio de Economía, Planificación y Desarrollo
+Ministerio de Administración Pública
+Ministerio de Educación Superior, Ciencia y Tecnología
+Ministerio de Vivienda, Hábitat y Edificaciones
+Procuraduría General de la República
+Ecuador
+Ministerio de Relaciones Exteriores y Movilidad Humana
+Ministerio de Economía y Finanzas
+Ministerio de Desarrollo Urbano y Vivienda
+Ministerio de Acuacultura y Pesca
+Ministerio de Ambiente, Agua y Transición Ecológica
+Ministerio de Telecomunicaciones y de la Sociedad de la Información
+Ministerio de Transporte y Obras Públicas
+Ministerio de Producción, Comercio Exterior, Inversiones y Pesca
+Ministerio de Cultura y Patrimonio
+El Salvador
+Ministerio de Justicia y Seguridad Pública
+Ministerio de Educación, Ciencia y Tecnología
+Ministerio de Trabajo y Previsión Social
+Secretaría de Innovación
+Secretaría de Comercio e Inversiones
+Guatemala
+Ministerio de Gobernación
+Ministerio de Finanzas Públicas
+Ministerio de Agricultura, Ganadería y Alimentación
+Ministerio de Comunicaciones, Infraestructura y Vivienda
+Ministerio de Cultura y Deportes
+Ministerio de Ambiente y Recursos Naturales
+Ministerio de Desarrollo Social
+Haiti
+Ministère de l'Agriculture, des Ressources Naturelles et du Développement Rural
+Ministère du Commerce et de l'Industrie
+Ministère de la Communication
+Ministère de la Défense
+Ministère de l'Économie et des Finances
+Ministère de l'Éducation Nationale
+Ministère de l'Environnement
+Ministère des Affaires Étrangères
+Ministère de la Santé Publique et de la Population
+Ministère de l'Intérieur et des Collectivités Territoriales
+Ministère de la Justice et de la Sécurité Publique
+Ministère de la Planification et de la Coopération Externe
+Ministère des Travaux Publics, Transports et Communications
+Ministère des Affaires Sociales et du Travail
+Ministère du Tourisme
+Ministère à la Condition Féminine et aux Droits des Femmes
+Ministère des Cultes
+Honduras
+Secretaría de Educación
+Secretaría de Cultura, Artes y Deportes
+Secretaría de Agricultura y Ganadería
+Secretaría de Gobernación y Justicia
+Secretaría de Seguridad
+Secretaría de Estado en el Despacho Presidencial
+Secretaría de Relaciones Exteriores
+Secretaría de Defensa Nacional
+Secretaría de Finanzas
+Secretaría de Industria y Comercio
+Secretaría de Obras Públicas, Transporte y Vivienda
+Secretaría de Recursos Naturales y Ambiente
+Secretaría de Salud
+Secretaría de Trabajo y Seguridad Social
+Secretaría de Turismo
+Secretaría de Planificación y Cooperación Externa
+Secretaría Técnica y de Cooperación Internacional
+Mexico
+Secretaría de Gobernación
+Secretaría de la Defensa Nacional
+Secretaría de Marina
+Secretaría de Seguridad y Protección Ciudadana
+Secretaría de Hacienda y Crédito Público
+Secretaría de Bienestar
+Secretaría de Medio Ambiente y Recursos Naturales
+Secretaría de Energía
+Secretaría de Economía
+Secretaría de Agricultura y Desarrollo Rural
+Secretaría de Comunicaciones y Transportes
+Secretaría de Infraestructura, Comunicaciones y Transportes
+Secretaría de la Función Pública
+Secretaría de Educación Pública
+Secretaría del Trabajo y Previsión Social
+Secretaría de Desarrollo Agrario, Territorial y Urbano
+Secretaría de Cultura
+Consejería Jurídica del Ejecutivo Federal
+Nicaragua
+Ministerio de Fomento, Industria y Comercio
+Ministerio de Transporte e Infraestructura
+Ministerio Agropecuario
+Ministerio del Ambiente y los Recursos Naturales
+Ministerio de la Familia, Adolescencia y Niñez
+Panama
+Ministerio de Gobierno y Justicia
+Ministerio de Desarrollo Agropecuario
+Ministerio de Trabajo y Desarrollo Laboral
+Ministerio de Comercio e Industrias
+Ministerio de Vivienda y Ordenamiento Territorial
+Ministerio de Seguridad Pública
+Paraguay
+Ministerio de Educación y Ciencias
+Ministerio de Salud Pública y Bienestar Social
+Ministerio de Industria y Comercio
+Ministerio del Trabajo, Empleo y Seguridad Social
+Ministerio de Tecnologías de la Información y Comunicación
+Peru
+Presidencia del Consejo de Ministros
+Ministerio de Desarrollo Agrario y Riego
+Ministerio de Desarrollo e Inclusión Social
+Ministerio del Ambiente
+Ministerio de Comercio Exterior y Turismo
+Ministerio de Vivienda, Construcción y Saneamiento
+Ministerio de Trabajo y Promoción del Empleo
+Ministerio de la Producción
+Ministerio de Transportes y Comunicaciones
+Ministerio de la Mujer y Poblaciones Vulnerables
+Uruguay
+Ministerio de Educación y Cultura
+Ministerio de Industria, Energía y Minería
+Ministerio de Ganadería, Agricultura y Pesca
+Venezuela
+Ministerio del Poder Popular para Relaciones Exteriores
+Ministerio del Poder Popular para la Defensa
+Ministerio del Poder Popular para Relaciones Interiores, Justicia y Paz
+Ministerio del Poder Popular de Planificación
+Ministerio del Poder Popular de Economía, Finanzas y Comercio Exterior
+Ministerio del Poder Popular para la Educación
+Ministerio del Poder Popular para la Educación Universitaria
+Ministerio del Poder Popular para la Salud
+Ministerio del Poder Popular para el Trabajo y Seguridad Social
+Ministerio del Poder Popular para el Transporte
+Ministerio del Poder Popular para la Vivienda y Hábitat
+Ministerio del Poder Popular para la Agricultura y Tierras
+Ministerio del Poder Popular para el Comercio
+Ministerio del Poder Popular para las Industrias
+Ministerio del Poder Popular para el Turismo
+Ministerio del Poder Popular para la Energía Eléctrica
+Ministerio del Poder Popular de Petróleo y Minería
+Ministerio del Poder Popular para Ciencia y Tecnología
+Ministerio del Poder Popular para la Cultura
+Ministerio del Poder Popular para la Comunicación e Información
+Ministerio del Poder Popular para la Mujer y la Igualdad de Género
+Ministerio del Poder Popular para los Pueblos Indígenas
+Ministerio del Poder Popular del Despacho de la Presidencia
+Ministerio del Poder Popular para las Comunas y Protección Social
+Ministerio del Poder Popular para el Ambiente
+Ministerio del Poder Popular para la Juventud y el Deporte
+Ministerio del Poder Popular para el Proceso Social del Trabajo
+Ministerio del Poder Popular de Alimentación
+Ministerio del Poder Popular para la Educación Media
+Ministerio del Poder Popular para Ecosocialismo
+Ministerio del Poder Popular para Acuicultura y Pesca
+Ministerio del Poder Popular de Atención de las Aguas
+Ministerio del Poder Popular para el Servicio Penitenciario
+
+Government of Argentina
+Ministry of Foreign Affairs International Trade and Worship
+Ministry of Human Capital
+Ministry of Deregulation and State Transformation
+Government of Belize
+Ministry of National Defence and Border Security
+Attorney General's Ministry
+Ministry of Foreign Affairs and Foreign Trade
+Ministry of Public Service Governance and Disaster Risk Management
+Ministry of Finance Investment and Economic Transformation
+Government of Bolivia
+Ministry of the Presidency
+Ministry of Hydrocarbons
+Ministry of Planning and Development
+Ministry of Productive Development
+Ministry of Rural Development
+Ministry of Mining and Metallurgy
+Ministry of Culture Decolonization and Depatriarchalization
+Government of Brazil
+Ministry of Human Rights and Citizenship
+Ministry of Industry Trade and Services
+Ministry of Social Development and Assistance Family and Fight Against Hunger
+Ministry of Planning and Budget
+Ministry of Fisheries and Aquaculture
+Ministry of Cities
+Ministry of Sport
+Ministry of Women Racial Equality and Indigenous Peoples
+Chief of Staff of the Presidency
+General-Secretariat of the Presidency
+Secretariat of Institutional Relations
+Secretariat of Social Communication
+Personal Office of the President of the Republic
+Institutional Security Office
+Government of Chile
+Ministry of Cultures Arts and Heritage
+Ministry of Economy Development and Tourism
+Ministry for the Environment
+Ministry of Housing and Urbanism
+Ministry of Justice and Human Rights
+Ministry of Labor and Social Welfare
+Ministry of Mining
+Ministry of Science Technology Knowledge and Innovation
+Ministry of Transport and Telecommunications
+Ministry of Women and Gender Equality
+Central Bank
+Production Development Corporation
+National Women's Service
+National Energy Commission
+Office of the General Comptroller of the Republic
+Government of Colombia
+Ministry of Finance and Public Credit
+Ministry of Justice and Law
+Ministry of Commerce Industry and Tourism
+Ministry of Environment Housing and Territorial Development
+Ministry of Information and Communications Technologies
+Government of Costa Rica
+Ministry of External Relations and Worship
+Ministry of External Commerce
+Ministry of Public Education
+Ministry of Agriculture and Cattle
+Ministry of Economy Industry and Commerce
+Costa Rican Institute of Tourism
+SUTEL
+Costa Rica Social Security System
+National Commission of Prevention of Risks and Attention of Emergencies
+Public Register of Properties
+Learning Institute
+Institute of the Coffee
+Institute of Cooperatives
+National Council for Scientific and Technological Research
+National Council of Production
+National Tourism Chamber
+Government of Cuba
+Council of Ministers
+Government of the Dominican Republic
+General Attorney's Office
+Government of Ecuador
+Ministry of the Government
+Ministry of Foreign Affairs and Human Mobility
+Ministry of Economy and Finance
+Ministry of Production Foreign Trade Investments and Fisheries
+Tribunal Supremo Electoral
+National Court of Justice
+National Council of the Judicature
+Public Defenders' Office
+State Attorneys' Office
+Government of El Salvador
+Ministry of Public Works Transportation Housing and Urban Development
+Ministry of Environment and Natural Resources
+Government of Guatemala
+Ministry of Culture and Sports
+Ministry of Economy
+Ministry of Government
+Government of Guyana
+Ministry of Amerindian Affairs
+Ministry of Human Services and Social Security
+Ministry of Labour and Manpower Planning
+Government of Haiti
+Ministry of Agriculture Natural Resources and Rural Development
+Ministry of Communication
+Ministry of Interior and Territorial Communities
+Ministry of Planning and External Cooperation
+Ministry of Public Works Transport and Communications
+Ministry on the Status and Rights of Women
+Ministry of Worship
+Government of Honduras
+Secretariat of Education
+Ministry of Human Rights Justice Governance and Decentralization
+Government of Mexico
+Secretariat of Foreign Affairs
+Secretariat of the Interior
+Secretariat of Finance and Public Credit
+Secretariat of Economy
+Secretariat of Security and Civilian Protection
+Secretariat of Environment and Natural Resources
+Secretariat of Energy
+Secretariat of Public Education
+Secretariat of Health
+Secretariat of Agriculture and Rural Development
+Secretariat of Infrastructure Communications and Transportation
+Secretariat of Science Humanities Technology and Innovation
+Secretariat of Welfare
+Secretariat of Anticorruption and Good Governance
+Secretariat of Women
+Digital Transformation and Telecommunications Agency
+SAT
+IMSS
+COFEPRIS
+Government of Nicaragua
+Ministry of Governance
+Ministry of Labor
+Government of Panama
+Ministry of Government and Justice
+Ministry of Commerce and Industries
+Ministry of Canal Affairs
+Ministry of Agricultural Development
+Ministry of Women
+Government of Paraguay
+Ministry of Foreign Relations
+Government of Peru
+Ministry of Development and Social Inclusion
+Ministry of Foreign Trade and Tourism
+Ministry of Women and Vulnerable Populations
+Government of Suriname
+Ministry of Foreign Affairs International Business and Cooperation
+Ministry of Justice and Police
+Cabinet of the President
+Government of Uruguay
+Government of Venezuela
+Ministry of Housing and Habitat
+Ministry of Electric Energy
+Ministry of Higher Education Science and Technology
+Ministry of Communication and Information
+Ministry of Ecosocialism
+# === ASIAN GOVERNMENTS ===
+Government of Japan
+Ministry of Internal Affairs and Communications
+Ministry of Education Culture Sports Science and Technology
+Ministry of Health Labour and Welfare
+Ministry of Agriculture Forestry and Fisheries
+Ministry of Economy Trade and Industry
+Ministry of Land Infrastructure Transport and Tourism
+National Police Agency
+Digital Agency
+Children and Families Agency
+State Council of the People's Republic of China
+Ministry of National Defense
+Ministry of Industry and Information Technology
+Ministry of Human Resources and Social Security
+Ministry of Natural Resources
+Ministry of Ecology and Environment
+Ministry of Agriculture and Rural Affairs
+Ministry of Culture and Tourism
+Ministry of Emergency Management
+Ministry of Public Security
+Ministry of Civil Affairs
+Ministry of Housing and Urban Rural Development
+National Development and Reform Commission
+National Health Commission
+State Administration for Market Regulation
+Government of India
+Ministry of Home Affairs
+Ministry of External Affairs
+Ministry of Railways
+Ministry of Information and Broadcasting
+Ministry of Electronics and IT
+Ministry of Agriculture and Farmers Welfare
+Ministry of Health and Family Welfare
+Ministry of Law and Justice
+Ministry of Power
+Ministry of Road Transport and Highways
+Ministry of Environment Forest and Climate Change
+Government of the Republic of Korea
+Ministry of Unification
+Ministry of the Interior and Safety
+Ministry of Culture Sports and Tourism
+Ministry of Agriculture Food and Rural Affairs
+Ministry of Trade Industry and Energy
+Ministry of Health and Welfare
+Ministry of Employment and Labor
+Ministry of Gender Equality and Family
+Ministry of Land Infrastructure and Transport
+Ministry of Oceans and Fisheries
+Ministry of SMEs and Startups
+Ministry of Patriots and Veterans Affairs
+Ministry of Science and ICT
+Government of Indonesia
+Ministry of State Owned Enterprises
+Ministry of Population and Family Development
+Ministry of National Development
+Ministry of Agriculture
+Ministry of Education Culture Research and Technology
+Government of the Kingdom of Saudi Arabia
+Ministry of Interior
+Ministry of Environment Water and Agriculture
+Ministry of Islamic Affairs Dawah and Guidance
+Government of Thailand
+Ministry of Agriculture and Cooperatives
+Ministry of Commerce
+Ministry of Digital Economy and Society
+Ministry of Higher Education Science Research and Innovation
+Government of Vietnam
+Ministry of Education and Training
+Ministry of Construction
+Ministry of Agriculture and Environment
+Ministry of Ethnic Minority and Religious Affairs
+Government Office
+Government Inspectorate
+State Bank of Vietnam
+Government of the Philippines
+Department of National Defense
+Department of Social Welfare and Development
+Department of Public Works and Highways
+Department of the Interior and Local Government
+Department of Labor and Employment
+Department of Finance
+Department of Foreign Affairs
+Department of Environment and Natural Resources
+Government of Pakistan
+Cabinet Secretariat
+Aviation Division
+Cabinet Division
+Establishment Division
+National Security Division
+Poverty Alleviation and Social Safety Division
+Ministry of Planning Development and Special Initiatives
+Ministry of Information Technology and Telecommunication
+Ministry of Federal Education and Professional Training
+Ministry of National Food Security and Research
+Ministry of Climate Change and Environmental Coordination
+Ministry of Defence Production
+Ministry of Economic Affairs
+Ministry of Housing and Works
+Ministry of Human Rights
+Ministry of Religious Affairs and Interfaith Harmony
+Ministry of Finance and Revenue
+Power Division
+Petroleum Division
+Ministry of Maritime Affairs
+Government of Bangladesh
+Ministry of Local Government Rural Development and Cooperatives
+Ministry of Industries
+Ministry of Textiles and Jute
+Ministry of Fisheries and Livestock
+Ministry of Food
+Ministry of Land
+Ministry of Chittagong Hill Tracts Affairs
+Ministry of Road Transport and Bridges
+Ministry of Shipping
+Ministry of Liberation War Affairs
+Ministry of Women and Children Affairs
+Ministry of Social Welfare
+Ministry of Civil Aviation and Tourism
+Ministry of Power Energy and Mineral Resources
+Ministry of Education
+Ministry of Law Justice and Parliamentary Affairs
+Ministry of Cultural Affairs
+Ministry of Labour and Employment
+Government of the Republic of Turkey
+Ministry of Treasury and Finance
+Ministry of Family and Social Services
+Ministry of Labor and Social Security
+Ministry of Environment Urbanization and Climate Change
+Ministry of Energy and Natural Resources
+Ministry of Industry and Technology
+Ministry of Transportation and Infrastructure
+Government of Malaysia
+Ministry of Housing and Local Government
+Ministry of Works
+Ministry of Science Technology and Innovation
+Government of Singapore
+Ministry of Digital Development and Information
+Ministry of Culture Community and Youth
+Ministry of Law
+Ministry of Manpower
+Ministry of Social and Family Development
+Ministry of Sustainability and the Environment
+Ministry of Trade and Industry
+Government of the Islamic Republic of Iran
+Ministry of Defense and Armed Forces Logistics
+Ministry of Science Research and Technology
+Government of Iraq
+Ministry of Defense
+Ministry of Migration and the Displaced
+Government of the United Arab Emirates
+Ministry of Energy and Infrastructure
+General Civil Aviation Authority
+Federal Authority For Identity and Citizenship
+Federal Customs Authority
+Government of Israel
+Ministry of Jerusalem and Tradition
+Ministry of Heritage
+Ministry of Negev and Galilee
+Ministry of Social Equality
+Ministry of Regional Cooperation
+Union Government of Myanmar
+Ministry of National Planning Investment and Foreign Economic Relations
+Ministry of the President Office
+Ministry of Digital Development and Communications
+Ministry of Border Affairs
+Ministry of Ethnic Affairs
+Ministry of Legal Affairs
+Ministry of Women Affairs
+Ministry of Agriculture Livestock and Irrigation
+Ministry of Cooperatives and Rural Development
+Ministry of Electric Power
+Ministry of Hotels and Tourism
+Ministry of Natural Resources and Environmental Conservation
+Government of Cambodia
+Ministry of Economics and Finance
+Ministry of Industry and Handicrafts
+Ministry of Mines and Energy
+Ministry of Public Service
+Ministry of Culture and Fine Arts
+Ministry of Education Youth and Sports
+Ministry of Labour and Vocational Training
+Government of Laos
+Ministry of Public Work and Transport
+Ministry of Natural Resources and Environment
+Ministry of Post and Communication
+Ministry of Education and Sports
+Ministry of Agriculture and Forest
+Ministry of Planning and Investment
+Ministry of Energy and Mines
+Government of Sri Lanka
+Ministry of Finance Planning and Digital Economy
+Ministry of Education Higher Education and Vocational Education
+Ministry of Foreign Affairs Foreign Employment and Tourism
+Ministry of Public Administration Provincial Councils Local Government
+Ministry of Justice and National Integration
+Ministry of Housing and Urban Development
+Government of Nepal
+Ministry of Physical Infrastructure and Transport
+Ministry of Energy Water Resource and Irrigation
+Ministry of Culture Tourism and Civil Aviation
+Ministry of Education Science and Technology
+Ministry of Industry Commerce and Supplies
+Islamic Emirate of Afghanistan
+Afghanistan National Disaster Management Authority
+Ministry of Agriculture Irrigation and Livestock
+Attorney General Office of Afghanistan
+Ministry of Borders and Tribal Affairs
+Ministry of Counter Narcotics
+Ministry of Hajj and Religious Affairs
+Ministry of Interior Affairs
+Ministry of Martyrs and Disabled Affairs
+Ministry of Mines and Petroleum
+Ministry of Refugees and Repatriation
+Ministry of Transport and Civil Aviation
+Ministry of Urban Development and Housing
+Government of Kazakhstan
+Ministry of National Economy
+Ministry of Culture and Information
+Ministry of Water Resources and Irrigation
+Ministry of Artificial Intelligence and Digital Development
+Ministry of Healthcare
+Ministry of Labor and Social Protection
+Government of Uzbekistan
+Ministry of Investment Industry and Trade
+Ministry of Mining Industry and Geology
+Ministry of Construction and Housing and Communal Services
+Ministry of Employment and Poverty Reduction
+Ministry of Higher Education Science and Innovation
+Ministry of Preschool and School Education
+Ministry of Sports
+Ministry of Digital Technologies
+Government of Azerbaijan
+Ministry of Defense Industry
+Ministry of Transport Communications and High Technologies
+Ministry of Emergency Situations
+Ministry of Labor and Social Protection of Population
+Ministry of Ecology and Natural Resources
+Government of Jordan
+Ministry of State for Public Sector Development
+Ministry of State for Prime Ministry Affairs
+Ministry of Investment
+Ministry of Foreign Affairs and Expatriates
+Government of Lebanon
+Ministry of Information
+Ministry of Interior and Municipalities
+Office of the Minister of State for Administrative Reform
+Government of Yemen
+Ministry of Oil and Minerals
+Ministry of Water and Environment
+Government of Taiwan
+Executive Yuan
+Ministry of Transportation and Communications
+Government of Mongolia
+Ministry of Justice and Home Affairs
+Ministry of Food Agriculture and Light Industry
+Ministry of Mining and Heavy Industry
+Ministry of Environment and Tourism
+Ministry of Construction and Urban Development
+Ministry of Road and Transport Development
+Government of the State of Kuwait
+Ministry of Electricity and Water
+Ministry of Social Affairs and Labor
+Government of the State of Qatar
+Ministry of Administrative Development Labor and Social Affairs
+Government of the Kingdom of Bahrain
+Ministry of Justice Islamic Affairs and Endowments
+Ministry of Works Municipalities Affairs and Urban Planning
+Ministry of Industry Commerce and Tourism
+Ministry of Labor and Social Development
+Ministry of Electricity and Water Affairs
+Ministry of Commerce Industry and Investment Promotion
+Ministry of Transport Communications and Information Technology
+Ministry of Agriculture Fisheries and Water Resources
+Ministry of Awqaf and Religious Affairs
+Government of Brunei Darussalam
+Ministry of Foreign Affairs
+Ministry of Finance and Economy
+Ministry of Health
+Ministry of Primary Resources and Tourism
+Ministry of Development
+Ministry of Transport and Infocommunications
+Ministry of Culture Youth and Sports
+Democratic Republic of Timor Leste
+Ministry of Foreign Affairs and Cooperation
+Ministry of Agriculture and Fisheries
+Ministry of Petroleum and Mineral Resources
+Ministry of Tourism Commerce and Industry
+Ministry of Social Solidarity and Inclusion
+Republic of Maldives
+Ministry of Islamic Affairs
+Ministry of Environment Climate Change and Technology
+Ministry of Youth Sports and Community Empowerment
+Ministry of Agriculture and Animal Welfare
+Ministry of Fisheries and Ocean Resources
+Kingdom of Bhutan
+Ministry of Foreign Affairs and External Trade
+Ministry of Agriculture and Livestock
+Ministry of Education and Skills Development
+Ministry of Industry Commerce and Employment
+Ministry of Information and Communications
+Democratic People's Republic of Korea
+Ministry of People's Armed Forces
+Ministry of State Security
+Ministry of People's Security
+Ministry of Metal and Machine Building Industries
+Ministry of Chemical Industry
+Ministry of Coal Industry
+Ministry of Electric Power Industry
+Ministry of Electronics Industry
+Republic of Armenia
+Ministry of Education Science Culture and Sports
+Ministry of Territorial Administration and Infrastructure
+Ministry of High Tech Industry
+Georgia
+Ministry of Education and Science
+Ministry of Environmental Protection and Agriculture
+Ministry of Regional Development and Infrastructure
+Ministry of Culture Sport and Youth
+Ministry of IDPs from the Occupied Territories Labor Health and Social Affairs
+Kyrgyz Republic
+Ministry of Justice
+Ministry of Economy and Commerce
+Ministry of Culture Information Sports and Youth Policy
+Ministry of Labor Social Security and Migration
+Republic of Tajikistan
+Ministry of Health and Social Protection
+Ministry of Economic Development and Trade
+Ministry of Energy and Water Resources
+Ministry of Industry and New Technologies
+Ministry of Labor Migration and Employment
+Turkmenistan
+Ministry of Health and Medical Industry
+Ministry of Agriculture and Environmental Protection
+Ministry of Industry and Construction Production
+Ministry of Trade and Foreign Economic Relations
+Ministry of Textile Industry
+Ministry of Agriculture and Agrarian Reform
+Ministry of Economy and Foreign Trade
+Ministry of Oil and Mineral Resources
+Ministry of Awqaf
+Ministry of Education Sport and Youth
+Ministry of Agriculture Rural Development and Environment
+Ministry of Energy Commerce and Industry
+Ministry of Transport Communications and Works
+Ministry of Labor and Social Insurance
