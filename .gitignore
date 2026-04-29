@@ -13,5 +13,8 @@ seed-aliases.sql
 .idea/
 .vscode/
 
+# Internal planning docs
+docs/superpowers/
+
 # OS
 .DS_Store

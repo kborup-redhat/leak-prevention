@@ -4,6 +4,81 @@ A Claude Code `UserPromptSubmit` hook that prevents accidental leakage of custom
 
 Runs as a Go API server in a local Podman container, backed by SQLite. A thin Go CLI binary acts as the hook, querying the API on every prompt.
 
+## Quick Start
+
+### 1. Download the hook binary
+
+Download the binary for your platform from [Releases](https://github.com/kborup-redhat/leak-prevention/releases/latest) and install it:
+
+```bash
+# Linux (amd64)
+curl -sL https://github.com/kborup-redhat/leak-prevention/releases/latest/download/leak-prevention-hook-linux-amd64 \
+  -o ~/.claude/hooks/leak-prevention-hook
+chmod +x ~/.claude/hooks/leak-prevention-hook
+
+# macOS (Apple Silicon)
+curl -sL https://github.com/kborup-redhat/leak-prevention/releases/latest/download/leak-prevention-hook-darwin-arm64 \
+  -o ~/.claude/hooks/leak-prevention-hook
+chmod +x ~/.claude/hooks/leak-prevention-hook
+
+# macOS (Intel)
+curl -sL https://github.com/kborup-redhat/leak-prevention/releases/latest/download/leak-prevention-hook-darwin-amd64 \
+  -o ~/.claude/hooks/leak-prevention-hook
+chmod +x ~/.claude/hooks/leak-prevention-hook
+```
+
+### 2. Pull and run the container
+
+```bash
+podman volume create leak-prevention-data
+
+podman run -d \
+  --name leak-prevention \
+  --restart unless-stopped \
+  -p 127.0.0.1:8642:8642 \
+  -v leak-prevention-data:/data/allowlist:Z \
+  quay.io/kborup/leak-prevention:1.0.0
+```
+
+### 3. Configure Claude Code
+
+Add the hook to your `~/.claude/settings.json`:
+
+```json
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/leak-prevention-hook",
+            "timeout": 10,
+            "statusMessage": "Scanning for data leaks..."
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+### 4. Verify
+
+```bash
+curl -s http://localhost:8642/health
+```
+
+You should see: `{"status":"ok","watchlist_count":3025,...}`
+
+## Container Image
+
+```
+quay.io/kborup/leak-prevention:1.0.0
+```
+
+Pull from [quay.io/kborup/leak-prevention](https://quay.io/repository/kborup/leak-prevention).
+
 ## How It Works
 
 Every prompt you send is scanned **before** it reaches the model. If a company or organization name is detected, the prompt is **blocked** and you're shown the detected names with instructions to allowlist them if they're safe to send.
@@ -30,72 +105,6 @@ If the leak prevention server is not running, the hook **blocks all prompts** an
 │ ~/.claude/hooks/     │  ◄── JSON ──       │ watchlist.db (read-only)   │
 │                      │                    │ allowlist.db (volume)      │
 └─────────────────────┘                    └────────────────────────────┘
-```
-
-## Files
-
-| File | Description |
-|------|-------------|
-| `cmd/server/main.go` | Go API server entrypoint |
-| `cmd/hook/main.go` | Go hook CLI binary entrypoint |
-| `internal/` | Matching logic, database access, HTTP handlers |
-| `Containerfile` | Multi-stage build (UBI Go toolset + UBI minimal) |
-| `update-watchlist.sh` | AI-powered watchlist updater with web search |
-| `seed-watchlist.sh` | Converts update output to SQLite database |
-| `install.sh` | Full installer (builds, deploys, configures) |
-| `leak-prevention-allowlist.txt` | Starter allowlist for fresh installs |
-
-## Requirements
-
-- **Podman** (for running the server container)
-- **Go 1.22+** (for building the hook binary)
-- **jq** (for configuring settings.json)
-- An AI CLI for watchlist updates: `claude`, `gemini`, `copilot`, or `chatgpt`
-
-## Installation
-
-```bash
-./install.sh
-```
-
-The installer will:
-1. Build the hook CLI binary and install to `~/.claude/hooks/`
-2. Pull or build the container image (`quay.io/kborup/leak-prevention:latest`)
-3. Create a Podman volume (`leak-prevention-data`) for the allowlist
-4. Start the container on `localhost:8642`
-5. Configure the hook in `~/.claude/settings.json`
-6. Verify the API is reachable with a health check
-
-It is idempotent — running it again won't create duplicate entries or containers.
-
-## Container Image
-
-```
-quay.io/kborup/leak-prevention:latest
-```
-
-### Manual container management
-
-```bash
-# Start
-podman start leak-prevention
-
-# Stop
-podman stop leak-prevention
-
-# View logs
-podman logs leak-prevention
-
-# Rebuild from source
-podman build -t quay.io/kborup/leak-prevention:latest .
-
-# Run (first time)
-podman run -d \
-  --name leak-prevention \
-  --restart unless-stopped \
-  -p 127.0.0.1:8642:8642 \
-  -v leak-prevention-data:/data/allowlist:Z \
-  quay.io/kborup/leak-prevention:latest
 ```
 
 ## Usage
@@ -158,22 +167,67 @@ curl -s -X DELETE http://localhost:8642/allowlist/Shell
 curl -s http://localhost:8642/health
 ```
 
+## Building from Source
+
+### Requirements
+
+- **Podman** (for running the server container)
+- **Go 1.22+** (for building the hook binary)
+- **jq** (for configuring settings.json)
+- **sqlite3** (for generating watchlist database)
+
+### Automated install
+
+```bash
+./install.sh
+```
+
+The installer builds the hook binary, builds or pulls the container image, creates the volume, starts the container, and configures `~/.claude/settings.json`.
+
+### Manual build
+
+```bash
+# Build hook binary
+go build -o ~/.claude/hooks/leak-prevention-hook ./cmd/hook
+
+# Build container image
+podman build -t quay.io/kborup/leak-prevention:latest .
+```
+
+## Container Management
+
+```bash
+# Start
+podman start leak-prevention
+
+# Stop
+podman stop leak-prevention
+
+# View logs
+podman logs leak-prevention
+
+# Rebuild from source
+podman build -t quay.io/kborup/leak-prevention:latest .
+podman stop leak-prevention && podman rm leak-prevention
+podman run -d --name leak-prevention --restart unless-stopped \
+  -p 127.0.0.1:8642:8642 -v leak-prevention-data:/data/allowlist:Z \
+  quay.io/kborup/leak-prevention:latest
+```
+
 ## Updating the Watchlist
 
-The `update-watchlist.sh` script uses an AI CLI with web search to fetch current company/organization listings and their subsidiaries.
+The `update-watchlist.sh` script uses an AI CLI with web search to fetch current company/organization listings.
 
 ```bash
 ./update-watchlist.sh
 ```
 
-It auto-detects which AI CLI is available and uses web search to get current data.
+After updating, rebuild the container image to pick up the new data:
 
-### Two-pass update
-
-1. **Pass 1**: Queries each category for current company names
-2. **Pass 2**: Queries for subsidiaries, brand names, and abbreviations for each company
-
-Results are written as SQL seed data, then converted to `watchlist.db` via `seed-watchlist.sh`. Rebuild the container image to pick up the new data.
+```bash
+./seed-watchlist.sh
+podman build -t quay.io/kborup/leak-prevention:latest .
+```
 
 ### Supported AI CLIs
 
@@ -183,16 +237,6 @@ Results are written as SQL seed data, then converted to `watchlist.db` via `seed
 | `gemini` | Built-in Google Search grounding |
 | `copilot` | Built-in `web_fetch` tool |
 | `chatgpt` | `--search` flag |
-
-### Options
-
-```
---provider <name>    Force a specific AI CLI instead of auto-detect
---file <path>        Path to watchlist file (default: ~/.claude/leak-prevention-watchlist.txt)
---parallel <n>       Max concurrent AI queries (default: 6)
---dry-run            Show what would be added without modifying the file
---verbose            Show detailed progress including raw AI responses
-```
 
 ### Categories
 
