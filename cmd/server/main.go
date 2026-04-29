@@ -47,12 +47,26 @@ func main() {
 		log.Fatalf("Failed to initialize allowlist: %v", err)
 	}
 
+	customWatchlistPath := filepath.Join(*allowlistDir, "custom-watchlist.db")
+	customDB, err := sql.Open("sqlite", customWatchlistPath)
+	if err != nil {
+		log.Fatalf("Failed to open custom watchlist: %v", err)
+	}
+	defer func() { _ = customDB.Close() }()
+
+	cwdb, err := db.NewCustomWatchlistDB(customDB)
+	if err != nil {
+		log.Fatalf("Failed to initialize custom watchlist: %v", err)
+	}
+
 	m := matcher.New(wdb, adb)
-	router := api.NewRouter(m, wdb, adb)
+	m.SetCustomWatchlist(cwdb)
+	router := api.NewRouter(m, wdb, adb, cwdb)
 
 	addr := fmt.Sprintf(":%d", *port)
 	log.Printf("Leak prevention server starting on %s", addr)
 	log.Printf("Watchlist: %d companies, %d aliases", wdb.CompanyCount(), wdb.AliasCount())
+	log.Printf("Custom watchlist: %d terms", cwdb.Count())
 	log.Printf("Allowlist: %d terms", adb.Count())
 
 	srv := &http.Server{

@@ -8,21 +8,14 @@ Runs as a Go API server in a local Podman container, backed by SQLite. A thin Go
 
 ### 1. Download the hook binary
 
-Download the binary for your platform from [Releases](https://github.com/kborup-redhat/leak-prevention/releases/latest) and install it:
+Pre-built binaries for **Linux**, **macOS**, and **Windows** (amd64 and arm64) are available on the [Releases](https://github.com/kborup-redhat/leak-prevention/releases/latest) page.
+
+Download the binary for your platform and install it:
 
 ```bash
-# Linux (amd64)
+# Example for Linux amd64 — see Releases page for all platforms
+mkdir -p ~/.claude/hooks
 curl -sL https://github.com/kborup-redhat/leak-prevention/releases/latest/download/leak-prevention-hook-linux-amd64 \
-  -o ~/.claude/hooks/leak-prevention-hook
-chmod +x ~/.claude/hooks/leak-prevention-hook
-
-# macOS (Apple Silicon)
-curl -sL https://github.com/kborup-redhat/leak-prevention/releases/latest/download/leak-prevention-hook-darwin-arm64 \
-  -o ~/.claude/hooks/leak-prevention-hook
-chmod +x ~/.claude/hooks/leak-prevention-hook
-
-# macOS (Intel)
-curl -sL https://github.com/kborup-redhat/leak-prevention/releases/latest/download/leak-prevention-hook-darwin-amd64 \
   -o ~/.claude/hooks/leak-prevention-hook
 chmod +x ~/.claude/hooks/leak-prevention-hook
 ```
@@ -85,7 +78,7 @@ Every prompt you send is scanned **before** it reaches the model. If a company o
 
 ### Three-Phase Detection
 
-1. **Watchlist matching** — Checks your prompt against a curated list of 3000+ company and organization names (Fortune 500 US/Europe, FTSE 100, DAX 40, CAC 40, Nordic, Nikkei 225, ASX 200, S&P/TSX 60, Hang Seng, government entities, international organizations). Case-insensitive matching.
+1. **Watchlist matching** — Checks your prompt against a curated list of 3000+ company and organization names (Fortune 500 US/Europe, FTSE 100, DAX 40, CAC 40, Nordic, Nikkei 225, ASX 200, S&P/TSX 60, Hang Seng, government entities, international organizations), plus any custom watchlist entries. Case-insensitive matching.
 
 2. **Subsidiary and alias matching** — Checks against known subsidiaries, brand names, and abbreviations linked to parent companies (e.g., `AWS` -> `Amazon`, `YouTube` -> `Alphabet`, `Instagram` -> `Meta`).
 
@@ -95,6 +88,58 @@ Every prompt you send is scanned **before** it reaches the model. If a company o
 
 If the leak prevention server is not running, the hook **blocks all prompts** and instructs you to start the container. No prompts pass through without scanning.
 
+## Custom Watchlist
+
+Two ways to add custom terms that should be blocked (customer names, legal terms, project code names):
+
+### Build-time: `custom-watchlist.txt`
+
+Add terms to `custom-watchlist.txt` in the repo (one per line). These are merged into the watchlist database when building the container image and persist across rebuilds.
+
+```
+# custom-watchlist.txt
+Acme Corp
+Project Nightfall
+Restricted Term
+```
+
+After editing, rebuild and push the container:
+```bash
+./seed-watchlist.sh
+podman build -t quay.io/kborup/leak-prevention:latest .
+```
+
+### Runtime: CLI or API
+
+Add terms at runtime without rebuilding. These are stored on the Podman volume and persist across container restarts.
+
+```bash
+# Add a term
+leak-prevention-hook watchlist add "Acme Corp" --category CUSTOMER
+
+# List custom terms
+leak-prevention-hook watchlist list
+
+# Remove a term
+leak-prevention-hook watchlist remove "Acme Corp"
+```
+
+The `--category` flag is optional (defaults to `CUSTOM`). Use it to tag entries by source: `CUSTOMER`, `LEGAL`, `PROJECT`, etc.
+
+<details>
+<summary>Alternative: curl</summary>
+
+```bash
+curl -s -X POST -H 'Content-Type: application/json' \
+  -d '{"term":"Acme Corp","category":"CUSTOMER"}' \
+  http://localhost:8642/watchlist/custom
+
+curl -s http://localhost:8642/watchlist/custom
+
+curl -s -X DELETE http://localhost:8642/watchlist/custom/Acme%20Corp
+```
+</details>
+
 ## Architecture
 
 ```
@@ -103,6 +148,7 @@ If the leak prevention server is not running, the hook **blocks all prompts** an
 │ (Go CLI binary)      │  localhost:8642    │ (Podman container)         │
 │                      │                    │                            │
 │ ~/.claude/hooks/     │  ◄── JSON ──       │ watchlist.db (read-only)   │
+│                      │                    │ custom-watchlist.db (vol)  │
 │                      │                    │ allowlist.db (volume)      │
 └─────────────────────┘                    └────────────────────────────┘
 ```
@@ -117,8 +163,8 @@ Once installed, the hook runs automatically on every prompt. No action needed.
 Organization name(s) detected: AWS, Google Cloud
 
 To allowlist, run:
-  ! curl -s -X POST -H 'Content-Type: application/json' \
-    -d '{"term":"AWS"}' http://localhost:8642/allowlist
+  ! leak-prevention-hook allowlist add "AWS"
+  ! leak-prevention-hook allowlist add "Google Cloud"
 
 Then re-send your message.
 ```
@@ -134,6 +180,29 @@ Start it with:
 Then re-send your message.
 ```
 
+### CLI Commands
+
+The hook binary doubles as a management CLI. No `curl` required.
+
+```bash
+# Server status
+leak-prevention-hook health
+
+# Allowlist management
+leak-prevention-hook allowlist list
+leak-prevention-hook allowlist add "AWS"
+leak-prevention-hook allowlist remove "AWS"
+
+# Custom watchlist management
+leak-prevention-hook watchlist list
+leak-prevention-hook watchlist add "Acme Corp"
+leak-prevention-hook watchlist add "Acme Corp" --category CUSTOMER
+leak-prevention-hook watchlist remove "Acme Corp"
+
+# Help
+leak-prevention-hook help
+```
+
 ## API Endpoints
 
 | Method | Path | Description |
@@ -142,30 +211,10 @@ Then re-send your message.
 | `GET` | `/allowlist` | List all allowlisted terms |
 | `POST` | `/allowlist` | Add a term to the allowlist |
 | `DELETE` | `/allowlist/{term}` | Remove a term from the allowlist |
+| `GET` | `/watchlist/custom` | List custom watchlist entries |
+| `POST` | `/watchlist/custom` | Add a custom watchlist entry |
+| `DELETE` | `/watchlist/custom/{term}` | Remove a custom watchlist entry |
 | `GET` | `/health` | Health check with counts |
-
-### Examples
-
-```bash
-# Check a prompt
-curl -s -X POST -H 'Content-Type: application/json' \
-  -d '{"prompt":"Deploy to AWS"}' \
-  http://localhost:8642/check
-
-# Add to allowlist
-curl -s -X POST -H 'Content-Type: application/json' \
-  -d '{"term":"Shell"}' \
-  http://localhost:8642/allowlist
-
-# List allowlist
-curl -s http://localhost:8642/allowlist
-
-# Remove from allowlist
-curl -s -X DELETE http://localhost:8642/allowlist/Shell
-
-# Health check
-curl -s http://localhost:8642/health
-```
 
 ## Building from Source
 

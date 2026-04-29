@@ -10,9 +10,10 @@ import (
 )
 
 type Handler struct {
-	matcher   *matcher.Matcher
-	watchlist *db.WatchlistDB
-	allowlist *db.AllowlistDB
+	matcher         *matcher.Matcher
+	watchlist       *db.WatchlistDB
+	allowlist       *db.AllowlistDB
+	customWatchlist *db.CustomWatchlistDB
 }
 
 func (h *Handler) Check(w http.ResponseWriter, r *http.Request) {
@@ -73,12 +74,57 @@ func (h *Handler) DeleteAllowlist(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusNoContent)
 }
 
+func (h *Handler) ListCustomWatchlist(w http.ResponseWriter, r *http.Request) {
+	entries, err := h.customWatchlist.List()
+	if err != nil {
+		http.Error(w, `{"error":"database error"}`, http.StatusInternalServerError)
+		return
+	}
+	if entries == nil {
+		entries = []db.CustomEntry{}
+	}
+	w.Header().Set("Content-Type", "application/json")
+	if err := json.NewEncoder(w).Encode(map[string][]db.CustomEntry{"entries": entries}); err != nil {
+		log.Printf("failed to encode custom watchlist response: %v", err)
+	}
+}
+
+func (h *Handler) AddCustomWatchlist(w http.ResponseWriter, r *http.Request) {
+	var req struct {
+		Term     string `json:"term"`
+		Category string `json:"category"`
+	}
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil || req.Term == "" {
+		http.Error(w, `{"error":"invalid request, need {\"term\":\"...\"}"}`, http.StatusBadRequest)
+		return
+	}
+	if err := h.customWatchlist.Add(req.Term, req.Category); err != nil {
+		http.Error(w, `{"error":"database error"}`, http.StatusInternalServerError)
+		return
+	}
+	w.WriteHeader(http.StatusCreated)
+}
+
+func (h *Handler) DeleteCustomWatchlist(w http.ResponseWriter, r *http.Request) {
+	term := r.PathValue("term")
+	if term == "" {
+		http.Error(w, `{"error":"term required"}`, http.StatusBadRequest)
+		return
+	}
+	if err := h.customWatchlist.Remove(term); err != nil {
+		http.Error(w, `{"error":"database error"}`, http.StatusInternalServerError)
+		return
+	}
+	w.WriteHeader(http.StatusNoContent)
+}
+
 func (h *Handler) Health(w http.ResponseWriter, r *http.Request) {
 	resp := map[string]interface{}{
-		"status":          "ok",
-		"watchlist_count": h.watchlist.CompanyCount(),
-		"alias_count":     h.watchlist.AliasCount(),
-		"allowlist_count": h.allowlist.Count(),
+		"status":               "ok",
+		"watchlist_count":      h.watchlist.CompanyCount(),
+		"alias_count":          h.watchlist.AliasCount(),
+		"custom_watchlist_count": h.customWatchlist.Count(),
+		"allowlist_count":      h.allowlist.Count(),
 	}
 	w.Header().Set("Content-Type", "application/json")
 	if err := json.NewEncoder(w).Encode(resp); err != nil {

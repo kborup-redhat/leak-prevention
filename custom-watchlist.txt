@@ -1,0 +1,18 @@
+# Custom Watchlist — additional terms to block
+#
+# Add one term per line. These are merged into the watchlist database
+# at build time and persist across container rebuilds.
+#
+# Use this for:
+#   - Customer names not in the auto-generated watchlist
+#   - Legal department restricted terms
+#   - Project code names or internal identifiers
+#   - Any word or phrase that should trigger a block
+#
+# Lines starting with # are comments and ignored.
+# Matching is case-insensitive.
+#
+# For runtime additions that don't require a rebuild, use the API:
+#   curl -s -X POST -H 'Content-Type: application/json' \
+#     -d '{"term":"SomeName","category":"LEGAL"}' \
+#     http://localhost:8642/watchlist/custom

@@ -52,8 +52,20 @@ func setupIntegrationServer(t *testing.T) *httptest.Server {
 	if err != nil {
 		t.Fatal(err)
 	}
+
+	customSQL, err := sql.Open("sqlite", ":memory:")
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() { _ = customSQL.Close() })
+	cwdb, err := db.NewCustomWatchlistDB(customSQL)
+	if err != nil {
+		t.Fatal(err)
+	}
+
 	m := matcher.New(wdb, adb)
-	router := api.NewRouter(m, wdb, adb)
+	m.SetCustomWatchlist(cwdb)
+	router := api.NewRouter(m, wdb, adb, cwdb)
 
 	return httptest.NewServer(router)
 }

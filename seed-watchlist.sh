@@ -66,6 +66,19 @@ echo "Seed SQL: ${SEED_SQL}"
 rm -f "$DB_OUT"
 sqlite3 "$DB_OUT" < "$SEED_SQL"
 
+CUSTOM_WATCHLIST="${SCRIPT_DIR}/custom-watchlist.txt"
+if [[ -f "$CUSTOM_WATCHLIST" ]]; then
+  echo "Merging custom watchlist entries..."
+  while IFS= read -r line; do
+    [[ -z "$line" ]] && continue
+    [[ "$line" == \#* ]] && continue
+    escaped="${line//\'/\'\'}"
+    sqlite3 "$DB_OUT" "INSERT OR IGNORE INTO companies (name, category) VALUES ('${escaped}', 'CUSTOM');"
+  done < "$CUSTOM_WATCHLIST"
+  CUSTOM_COUNT=$(sqlite3 "$DB_OUT" "SELECT COUNT(*) FROM companies WHERE category = 'CUSTOM';")
+  echo "  Added ${CUSTOM_COUNT} custom entries."
+fi
+
 COMPANY_COUNT=$(sqlite3 "$DB_OUT" "SELECT COUNT(*) FROM companies;")
 echo ""
 echo "Database created:"

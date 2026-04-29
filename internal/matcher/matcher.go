@@ -16,12 +16,17 @@ type Result struct {
 }
 
 type Matcher struct {
-	watchlist *db.WatchlistDB
-	allowlist *db.AllowlistDB
+	watchlist       *db.WatchlistDB
+	allowlist       *db.AllowlistDB
+	customWatchlist *db.CustomWatchlistDB
 }
 
 func New(watchlist *db.WatchlistDB, allowlist *db.AllowlistDB) *Matcher {
 	return &Matcher{watchlist: watchlist, allowlist: allowlist}
+}
+
+func (m *Matcher) SetCustomWatchlist(cw *db.CustomWatchlistDB) {
+	m.customWatchlist = cw
 }
 
 func (m *Matcher) Allowlist() *db.AllowlistDB {
@@ -56,6 +61,14 @@ func (m *Matcher) Check(prompt string) Result {
 			if found {
 				seen[strings.ToLower(token)] = true
 				matches = append(matches, match)
+				continue
+			}
+
+			if m.customWatchlist != nil {
+				if cmatch, cfound := m.customWatchlist.Find(token); cfound {
+					seen[strings.ToLower(token)] = true
+					matches = append(matches, cmatch)
+				}
 			}
 		}
 	}

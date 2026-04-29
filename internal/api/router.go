@@ -7,15 +7,18 @@ import (
 	"github.com/kborup-redhat/leak-prevention/internal/matcher"
 )
 
-func NewRouter(m *matcher.Matcher, wdb *db.WatchlistDB, adb *db.AllowlistDB) http.Handler {
+func NewRouter(m *matcher.Matcher, wdb *db.WatchlistDB, adb *db.AllowlistDB, cwdb *db.CustomWatchlistDB) http.Handler {
 	mux := http.NewServeMux()
 
-	h := &Handler{matcher: m, watchlist: wdb, allowlist: adb}
+	h := &Handler{matcher: m, watchlist: wdb, allowlist: adb, customWatchlist: cwdb}
 
 	mux.HandleFunc("POST /check", h.Check)
 	mux.HandleFunc("GET /allowlist", h.ListAllowlist)
 	mux.HandleFunc("POST /allowlist", h.AddAllowlist)
 	mux.HandleFunc("DELETE /allowlist/{term}", h.DeleteAllowlist)
+	mux.HandleFunc("GET /watchlist/custom", h.ListCustomWatchlist)
+	mux.HandleFunc("POST /watchlist/custom", h.AddCustomWatchlist)
+	mux.HandleFunc("DELETE /watchlist/custom/{term}", h.DeleteCustomWatchlist)
 	mux.HandleFunc("GET /health", h.Health)
 
 	return mux

@@ -54,9 +54,21 @@ func setupServer(t *testing.T) http.Handler {
 	if err != nil {
 		t.Fatal(err)
 	}
-	m := matcher.New(wdb, adb)
 
-	return api.NewRouter(m, wdb, adb)
+	customSQL, err := sql.Open("sqlite", ":memory:")
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() { _ = customSQL.Close() })
+	cwdb, err := db.NewCustomWatchlistDB(customSQL)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	m := matcher.New(wdb, adb)
+	m.SetCustomWatchlist(cwdb)
+
+	return api.NewRouter(m, wdb, adb, cwdb)
 }
 
 func TestCheckEndpoint_Blocked(t *testing.T) {
