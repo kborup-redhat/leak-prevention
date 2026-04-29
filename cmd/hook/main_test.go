@@ -27,11 +27,17 @@ func TestFormatBlockResponse(t *testing.T) {
 	if parsed.Decision != "block" {
 		t.Errorf("expected decision block, got %s", parsed.Decision)
 	}
-	if !strings.Contains(parsed.Reason, "leak-prevention-hook allowlist add") {
-		t.Error("expected hook binary command in reason, not curl")
+	if !strings.Contains(parsed.Reason, "allowlist add") {
+		t.Error("expected allowlist add command in reason")
 	}
 	if strings.Contains(parsed.Reason, "curl") {
 		t.Error("reason should not contain curl commands")
+	}
+	if strings.Contains(parsed.Reason, `\n`) {
+		t.Error("reason contains literal \\n instead of real newlines")
+	}
+	if !strings.Contains(parsed.Reason, "\n") {
+		t.Error("reason should contain real newlines")
 	}
 }
 

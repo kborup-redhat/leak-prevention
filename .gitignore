@@ -4,7 +4,6 @@
 /leak-prevention-hook
 *.db
 seed-watchlist.sql
-seed-aliases.sql
 
 # Go
 /vendor/

@@ -30,8 +30,10 @@ podman run -d \
   --restart unless-stopped \
   -p 127.0.0.1:8642:8642 \
   -v leak-prevention-data:/data/allowlist:Z \
-  quay.io/kborup/leak-prevention:1.0.0
+  quay.io/kborup/leak-prevention:latest
 ```
+
+> **Tip:** To pin a specific version, replace `latest` with a version tag (e.g., `1.2.0`). See the [VERSION](VERSION) file for the current release.
 
 ### 3. Configure Claude Code
 
@@ -62,15 +64,15 @@ Add the hook to your `~/.claude/settings.json`:
 curl -s http://localhost:8642/health
 ```
 
-You should see: `{"status":"ok","watchlist_count":3025,...}`
+You should see: `{"status":"ok","watchlist_count":3025,"alias_count":1314,...}`
 
 ## Container Image
 
 ```
-quay.io/kborup/leak-prevention:1.0.0
+quay.io/kborup/leak-prevention:latest
 ```
 
-Pull from [quay.io/kborup/leak-prevention](https://quay.io/repository/kborup/leak-prevention).
+Pull from [quay.io/kborup/leak-prevention](https://quay.io/repository/kborup/leak-prevention). Version tags match the [VERSION](VERSION) file (e.g., `1.2.0`).
 
 ## How It Works
 
@@ -163,11 +165,13 @@ Once installed, the hook runs automatically on every prompt. No action needed.
 Organization name(s) detected: AWS, Google Cloud
 
 To allowlist, run:
-  ! leak-prevention-hook allowlist add "AWS"
-  ! leak-prevention-hook allowlist add "Google Cloud"
+  ! /home/user/.claude/hooks/leak-prevention-hook allowlist add "AWS"
+  ! /home/user/.claude/hooks/leak-prevention-hook allowlist add "Google Cloud"
 
 Then re-send your message.
 ```
+
+> The command shows the full path to wherever you installed the hook binary.
 
 ### When the server is not running
 

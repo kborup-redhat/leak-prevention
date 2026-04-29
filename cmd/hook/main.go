@@ -355,6 +355,14 @@ func callServer(url, prompt string) (*checkResponse, error) {
 	return &result, nil
 }
 
+func selfPath() string {
+	exe, err := os.Executable()
+	if err != nil {
+		return "leak-prevention-hook"
+	}
+	return exe
+}
+
 func formatBlockResponse(matches []matchEntry) string {
 	var names []string
 	for _, m := range matches {
@@ -362,17 +370,18 @@ func formatBlockResponse(matches []matchEntry) string {
 	}
 	namesList := strings.Join(names, ", ")
 
+	hookPath := selfPath()
 	var cmds []string
 	for _, m := range matches {
 		cmds = append(cmds, fmt.Sprintf(
-			`  ! leak-prevention-hook allowlist add "%s"`,
-			m.Name,
+			`  ! %s allowlist add "%s"`,
+			hookPath, m.Name,
 		))
 	}
 
 	reason := fmt.Sprintf(
-		"Organization name(s) detected: %s\\n\\nTo allowlist, run:\\n%s\\n\\nThen re-send your message.",
-		namesList, strings.Join(cmds, "\\n"),
+		"Organization name(s) detected: %s\n\nTo allowlist, run:\n%s\n\nThen re-send your message.",
+		namesList, strings.Join(cmds, "\n"),
 	)
 
 	resp := map[string]string{
@@ -386,7 +395,7 @@ func formatBlockResponse(matches []matchEntry) string {
 func formatServerDownResponse() string {
 	resp := map[string]string{
 		"decision": "block",
-		"reason":   "Leak prevention server is not running.\\n\\nStart it with:\\n  ! podman start leak-prevention\\n\\nThen re-send your message.",
+		"reason":   "Leak prevention server is not running.\n\nStart it with:\n  ! podman start leak-prevention\n\nThen re-send your message.",
 	}
 	out, _ := json.Marshal(resp)
 	return string(out)

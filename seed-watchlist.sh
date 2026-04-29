@@ -79,11 +79,22 @@ if [[ -f "$CUSTOM_WATCHLIST" ]]; then
   echo "  Added ${CUSTOM_COUNT} custom entries."
 fi
 
+ALIASES_SQL="${SCRIPT_DIR}/seed-aliases.sql"
+if [[ -f "$ALIASES_SQL" ]]; then
+  echo "Loading aliases..."
+  sqlite3 "$DB_OUT" < "$ALIASES_SQL"
+  ALIAS_COUNT=$(sqlite3 "$DB_OUT" "SELECT COUNT(*) FROM aliases;")
+  echo "  Loaded ${ALIAS_COUNT} aliases."
+else
+  ALIAS_COUNT=0
+  echo "No seed-aliases.sql found (run seed-aliases.sh to generate)."
+fi
+
 COMPANY_COUNT=$(sqlite3 "$DB_OUT" "SELECT COUNT(*) FROM companies;")
 echo ""
 echo "Database created:"
 echo "  Companies: ${COMPANY_COUNT}"
-echo "  Aliases:   0 (run update-watchlist.sh pass 2 to populate)"
+echo "  Aliases:   ${ALIAS_COUNT}"
 echo ""
 
 sqlite3 "$DB_OUT" "PRAGMA integrity_check;" | head -1
