@@ -244,6 +244,13 @@ func TestCmdWatchlistRemove(t *testing.T) {
 	}
 }
 
+func TestRunCLI_Version(t *testing.T) {
+	code := runCLI([]string{"version"}, "http://localhost:1")
+	if code != 0 {
+		t.Fatalf("expected exit 0 for version, got %d", code)
+	}
+}
+
 func TestRunCLI_Help(t *testing.T) {
 	code := runCLI([]string{"help"}, "http://localhost:1")
 	if code != 0 {

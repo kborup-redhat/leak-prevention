@@ -6,12 +6,15 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"net/url"
 	"os"
 	"strings"
 	"time"
 )
 
 const serverURL = "http://localhost:8642"
+
+var version = "dev"
 
 type matchEntry struct {
 	Name     string `json:"name"`
@@ -80,6 +83,9 @@ func runCLI(args []string, baseURL string) int {
 			return 1
 		}
 		return runWatchlist(client, baseURL, args[1:])
+	case "version", "--version", "-v":
+		fmt.Println(version)
+		return 0
 	case "help", "--help", "-h":
 		printUsage()
 		return 0
@@ -104,6 +110,7 @@ Commands:
   watchlist add <term>          Add a custom watchlist entry
   watchlist add <term> --category <CAT>  Add with a category (default: CUSTOM)
   watchlist remove <term>       Remove a custom watchlist entry
+  version                       Show version
   help                          Show this help`)
 }
 
@@ -231,7 +238,8 @@ func cmdAllowlistAdd(client *http.Client, baseURL, term string) int {
 }
 
 func cmdAllowlistRemove(client *http.Client, baseURL, term string) int {
-	req, err := http.NewRequest(http.MethodDelete, baseURL+"/allowlist/"+term, nil)
+	deleteURL := baseURL + "/allowlist/" + url.PathEscape(term)
+	req, err := http.NewRequest(http.MethodDelete, deleteURL, nil) //nolint:gosec // baseURL is hardcoded localhost
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "Error: invalid term")
 		return 1
@@ -305,7 +313,8 @@ func cmdWatchlistAdd(client *http.Client, baseURL, term, category string) int {
 }
 
 func cmdWatchlistRemove(client *http.Client, baseURL, term string) int {
-	req, err := http.NewRequest(http.MethodDelete, baseURL+"/watchlist/custom/"+term, nil)
+	deleteURL := baseURL + "/watchlist/custom/" + url.PathEscape(term)
+	req, err := http.NewRequest(http.MethodDelete, deleteURL, nil) //nolint:gosec // baseURL is hardcoded localhost
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "Error: invalid term")
 		return 1
