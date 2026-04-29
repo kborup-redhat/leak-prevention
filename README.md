@@ -271,11 +271,22 @@ The `update-watchlist.sh` script uses an AI CLI with web search to fetch current
 ./update-watchlist.sh
 ```
 
-After updating, rebuild the container image to pick up the new data:
+After updating, seed the database and populate aliases, then rebuild:
 
 ```bash
 ./seed-watchlist.sh
+./seed-aliases.sh
 podman build -t quay.io/kborup/leak-prevention:latest .
+```
+
+### Alias Seeding (Pass 2)
+
+`seed-aliases.sh` populates the aliases table with subsidiaries, brand names, and abbreviations for each company (e.g., `AWS` -> `Amazon`, `YouTube` -> `Alphabet`, `LinkedIn` -> `Microsoft`). Uses the same AI CLI as `update-watchlist.sh`.
+
+```bash
+./seed-aliases.sh                           # auto-detect AI CLI
+./seed-aliases.sh --provider claude         # use specific CLI
+./seed-aliases.sh --dry-run --verbose       # preview without writing
 ```
 
 ### Supported AI CLIs
