@@ -46,17 +46,23 @@ jobs:
       - name: Run govulncheck
         run: govulncheck ./...
 
-  build:
-    name: Build
+  build-and-push:
+    name: Build and Push
     runs-on: ubuntu-latest
-    container:
-      image: quay.io/kborup/ai-toolbox-ci:1.25
     needs: [test, lint, security]
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build server
-        run: go build -o leak-prevention-server ./cmd/server
+      - name: Generate watchlist database
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq sqlite3
+          bash seed-watchlist.sh
 
-      - name: Build hook
-        run: go build -o leak-prevention-hook ./cmd/hook
+      - name: Login to Quay
+        run: podman login -u '${{ secrets.QUAY_USERNAME }}' -p '${{ secrets.QUAY_PASSWORD }}' quay.io
+
+      - name: Build container image
+        run: podman build -t quay.io/kborup/leak-prevention:latest .
+
+      - name: Push container image
+        run: podman push quay.io/kborup/leak-prevention:latest
