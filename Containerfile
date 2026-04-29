@@ -1,5 +1,6 @@
 # Build stage
 FROM registry.access.redhat.com/ubi9/go-toolset:latest AS builder
+USER 0
 WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
