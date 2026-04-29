@@ -239,12 +239,12 @@ func cmdAllowlistAdd(client *http.Client, baseURL, term string) int {
 
 func cmdAllowlistRemove(client *http.Client, baseURL, term string) int {
 	deleteURL := baseURL + "/allowlist/" + url.PathEscape(term)
-	req, err := http.NewRequest(http.MethodDelete, deleteURL, nil) //nolint:gosec // baseURL is hardcoded localhost
+	req, err := http.NewRequest(http.MethodDelete, deleteURL, nil) // #nosec G704 -- baseURL is hardcoded localhost
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "Error: invalid term")
 		return 1
 	}
-	resp, err := client.Do(req)
+	resp, err := client.Do(req) // #nosec G704
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "Error: server not reachable")
 		return 1
@@ -314,12 +314,12 @@ func cmdWatchlistAdd(client *http.Client, baseURL, term, category string) int {
 
 func cmdWatchlistRemove(client *http.Client, baseURL, term string) int {
 	deleteURL := baseURL + "/watchlist/custom/" + url.PathEscape(term)
-	req, err := http.NewRequest(http.MethodDelete, deleteURL, nil) //nolint:gosec // baseURL is hardcoded localhost
+	req, err := http.NewRequest(http.MethodDelete, deleteURL, nil) // #nosec G704 -- baseURL is hardcoded localhost
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "Error: invalid term")
 		return 1
 	}
-	resp, err := client.Do(req)
+	resp, err := client.Do(req) // #nosec G704
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "Error: server not reachable")
 		return 1
