@@ -178,6 +178,47 @@ func TestMatcher_CaseInsensitive(t *testing.T) {
 	}
 }
 
+func TestMatcher_SkipCamelCase(t *testing.T) {
+	m := setupMatcher(t)
+	cases := []string{
+		"BadAccess", "BadDrawable", "BadPixmap", "BadShmSeg",
+		"CopyArea", "FreePixmap", "ShmAttach", "ShmCreatePixmap",
+		"ShmDetach", "GetProperty", "SetAttribute", "CreateWindow",
+		"DestroyNotify", "MapRequest", "UnmapNotify", "ConfigureRequest",
+		"IOException", "NullPointerException", "StringBuilder",
+		"HashMap", "ArrayList", "LinkedList", "TreeMap",
+	}
+	for _, word := range cases {
+		result := m.Check("Use " + word + " in the code")
+		if result.Blocked {
+			t.Errorf("CamelCase identifier %q should not trigger: %+v", word, result.Matches)
+		}
+	}
+}
+
+func TestMatcher_SkipProgrammingPrefixes(t *testing.T) {
+	m := setupMatcher(t)
+	cases := []string{
+		"IsValid", "HasPermission", "GetName", "SetValue",
+		"OnClick", "HandleRequest", "FromString", "ToString",
+		"NewBuilder", "WithTimeout", "ToArray", "AsString",
+	}
+	for _, word := range cases {
+		result := m.Check("Call " + word + " in the handler")
+		if result.Blocked {
+			t.Errorf("programming identifier %q should not trigger: %+v", word, result.Matches)
+		}
+	}
+}
+
+func TestMatcher_RealCompaniesStillCaught(t *testing.T) {
+	m := setupMatcher(t)
+	result := m.Check("We should talk to Palantir about a deal")
+	if !result.Blocked {
+		t.Fatal("single PascalCase word that could be a company should still be caught")
+	}
+}
+
 func TestMatcher_AllowlistCommand(t *testing.T) {
 	m := setupMatcher(t)
 	result := m.Check("Deploy to AWS")

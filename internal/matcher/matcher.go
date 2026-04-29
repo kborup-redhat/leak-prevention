@@ -37,6 +37,22 @@ var wordRe = regexp.MustCompile(`[A-Za-z][A-Za-z0-9-]*`)
 var randomTokenRe = regexp.MustCompile(`[0-9]`)
 var hasLower = regexp.MustCompile(`[a-z]`)
 var hasUpper = regexp.MustCompile(`[A-Z]`)
+var internalUpperRe = regexp.MustCompile(`[a-z][A-Z]|[A-Z]{2,}[a-z]`)
+
+var programmingPrefixes = []string{
+	"Get", "Set", "Is", "Has", "Can", "Will", "Should",
+	"On", "Handle", "From", "To", "As", "With", "Without",
+	"New", "Make", "Create", "Delete", "Remove", "Destroy",
+	"Add", "Insert", "Update", "Find", "Search", "Lookup",
+	"Open", "Close", "Read", "Write", "Load", "Save", "Store",
+	"Start", "Stop", "Init", "Reset", "Clear", "Flush",
+	"Parse", "Format", "Convert", "Transform", "Encode", "Decode",
+	"Enable", "Disable", "Register", "Unregister",
+	"Map", "Unmap", "Lock", "Unlock", "Try", "Do", "Run",
+	"Build", "Check", "Validate", "Verify", "Test", "Assert",
+	"Free", "Alloc", "Copy", "Clone", "Merge", "Split",
+	"Bad", "Not", "No", "Un", "Shm", "Sys",
+}
 
 func (m *Matcher) Check(prompt string) Result {
 	seen := make(map[string]bool)
@@ -100,6 +116,16 @@ func (m *Matcher) Check(prompt string) Result {
 			continue
 		}
 
+		// Skip CamelCase identifiers (e.g. BadAccess, IOException, HashMap)
+		if internalUpperRe.MatchString(word) {
+			continue
+		}
+
+		// Skip words with common programming prefixes (e.g. GetName, IsValid, HandleRequest)
+		if hasProgrammingPrefix(word) {
+			continue
+		}
+
 		// Skip tech terms
 		if TechTerms[lower] {
 			continue
@@ -144,6 +170,15 @@ func (m *Matcher) Check(prompt string) Result {
 	}
 
 	return result
+}
+
+func hasProgrammingPrefix(word string) bool {
+	for _, prefix := range programmingPrefixes {
+		if strings.HasPrefix(word, prefix) && len(word) > len(prefix) && unicode.IsUpper(rune(word[len(prefix)])) {
+			return true
+		}
+	}
+	return false
 }
 
 func isKnownWord(lower string) bool {
