@@ -121,7 +121,22 @@ func (m *Matcher) Check(prompt string) Result {
 			continue
 		}
 
-		// Skip words with common programming prefixes (e.g. GetName, IsValid, HandleRequest)
+		// Skip pure ALL-CAPS words (acronyms/abbreviations, not company names — those are caught by Phase 1)
+		if !hasLower.MatchString(word) {
+			continue
+		}
+
+		// Skip words containing digits (format specifiers like B8G8R8A8, FP32, R32G32B32A32)
+		if randomTokenRe.MatchString(word) {
+			continue
+		}
+
+		// Skip hyphenated compounds where all parts are dictionary words (e.g. Double-buffered, Semi-transparent)
+		if strings.Contains(word, "-") && isHyphenatedDictionaryWord(word) {
+			continue
+		}
+
+		// Skip words with common programming prefixes or that are exact prefix matches (e.g. GetName, IsValid, Alloc)
 		if hasProgrammingPrefix(word) {
 			continue
 		}
@@ -174,11 +189,27 @@ func (m *Matcher) Check(prompt string) Result {
 
 func hasProgrammingPrefix(word string) bool {
 	for _, prefix := range programmingPrefixes {
+		if word == prefix {
+			return true
+		}
 		if strings.HasPrefix(word, prefix) && len(word) > len(prefix) && unicode.IsUpper(rune(word[len(prefix)])) {
 			return true
 		}
 	}
 	return false
+}
+
+func isHyphenatedDictionaryWord(word string) bool {
+	parts := strings.Split(strings.ToLower(word), "-")
+	for _, part := range parts {
+		if part == "" {
+			continue
+		}
+		if !isKnownWord(part) {
+			return false
+		}
+	}
+	return true
 }
 
 func isKnownWord(lower string) bool {

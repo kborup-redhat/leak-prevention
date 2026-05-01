@@ -226,3 +226,65 @@ func TestMatcher_AllowlistCommand(t *testing.T) {
 		t.Fatal("expected allowlist commands in blocked result")
 	}
 }
+
+func TestMatcher_SkipAllCapsAbbreviations(t *testing.T) {
+	m := setupMatcher(t)
+	cases := []string{
+		"GLFW", "KHR", "SWAPCHAIN", "SFLOAT", "UNORM",
+		"VRAM", "NVML", "FMAD", "SRGB",
+	}
+	for _, word := range cases {
+		result := m.Check("Use " + word + " in the code")
+		if result.Blocked {
+			t.Errorf("ALL-CAPS abbreviation %q should not trigger auto-detection: %+v", word, result.Matches)
+		}
+	}
+}
+
+func TestMatcher_SkipDigitMixedTokens(t *testing.T) {
+	m := setupMatcher(t)
+	cases := []string{
+		"B8G8R8A8", "R32G32B32A32", "FP32", "FP16", "INT32",
+		"H2D", "D2H", "D2D",
+	}
+	for _, word := range cases {
+		result := m.Check("Format is " + word + " here")
+		if result.Blocked {
+			t.Errorf("digit-mixed token %q should not trigger auto-detection: %+v", word, result.Matches)
+		}
+	}
+}
+
+func TestMatcher_SkipHyphenatedCompounds(t *testing.T) {
+	m := setupMatcher(t)
+	cases := []string{
+		"Double-buffered", "Semi-transparent", "Build-tagged",
+	}
+	for _, word := range cases {
+		result := m.Check("This is " + word + " rendering")
+		if result.Blocked {
+			t.Errorf("hyphenated compound %q should not trigger auto-detection: %+v", word, result.Matches)
+		}
+	}
+}
+
+func TestMatcher_SkipStandalonePrefixWords(t *testing.T) {
+	m := setupMatcher(t)
+	cases := []string{
+		"Alloc", "Init", "Merge", "Split", "Clone",
+	}
+	for _, word := range cases {
+		result := m.Check("Call " + word + " for memory")
+		if result.Blocked {
+			t.Errorf("standalone prefix word %q should not trigger auto-detection: %+v", word, result.Matches)
+		}
+	}
+}
+
+func TestMatcher_WatchlistAllCapsStillCaught(t *testing.T) {
+	m := setupMatcher(t)
+	result := m.Check("Deploy our app to AWS")
+	if !result.Blocked {
+		t.Fatal("ALL-CAPS watchlist entry AWS should still be caught by Phase 1")
+	}
+}
